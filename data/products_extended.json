@@ -1,0 +1,571 @@
+{
+  "products": [
+    {
+      "sku": "STE-001",
+      "name": "Power Steering Pump",
+      "category": "steering",
+      "brand": "SteerPro",
+      "compatibility": ["Toyota", "Honda", "Nissan"],
+      "specifications": {
+        "type": "Vane Pump",
+        "pressure": "1200 PSI",
+        "flow_rate": "8 L/min",
+        "reservoir": "Integrated",
+        "material": "Aluminum"
+      },
+      "dimensions": {
+        "length": "180mm",
+        "width": "120mm",
+        "height": "150mm"
+      },
+      "weight": "3.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J1273"],
+      "description": "High-performance power steering pump with integrated reservoir."
+    },
+    {
+      "sku": "STE-002",
+      "name": "Steering Rack",
+      "category": "steering",
+      "brand": "RackTech",
+      "compatibility": ["Ford", "Chevrolet", "Dodge"],
+      "specifications": {
+        "type": "Power Assisted",
+        "ratio": "16:1",
+        "travel": "150mm",
+        "material": "Cast Iron",
+        "seals": "Viton"
+      },
+      "dimensions": {
+        "length": "850mm",
+        "diameter": "65mm"
+      },
+      "weight": "12.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Precision steering rack with power assistance."
+    },
+    {
+      "sku": "STE-003",
+      "name": "Tie Rod End",
+      "category": "steering",
+      "brand": "TieRodPro",
+      "compatibility": ["BMW", "Mercedes", "Audi"],
+      "specifications": {
+        "type": "Outer",
+        "ball_joint": "Sealed",
+        "thread_size": "M14x1.5",
+        "material": "Steel",
+        "coating": "Zinc Plated"
+      },
+      "dimensions": {
+        "length": "120mm",
+        "thread_length": "45mm"
+      },
+      "weight": "0.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Durable tie rod end with sealed ball joint."
+    },
+    {
+      "sku": "STE-004",
+      "name": "Steering Column",
+      "category": "steering",
+      "brand": "ColumnTech",
+      "compatibility": ["Volkswagen", "Skoda", "Seat"],
+      "specifications": {
+        "type": "Telescopic",
+        "material": "Steel",
+        "adjustment": "Tilt/Telescope",
+        "lock": "Ignition",
+        "airbag": "Compatible"
+      },
+      "dimensions": {
+        "length": "450mm",
+        "diameter": "35mm"
+      },
+      "weight": "4.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Adjustable steering column with ignition lock."
+    },
+    {
+      "sku": "STE-005",
+      "name": "Steering Wheel",
+      "category": "steering",
+      "brand": "WheelPro",
+      "compatibility": ["Hyundai", "Kia", "Mazda"],
+      "specifications": {
+        "type": "Leather Wrapped",
+        "diameter": "380mm",
+        "material": "Polyurethane",
+        "grip": "Perforated",
+        "controls": "Audio/Cruise"
+      },
+      "dimensions": {
+        "diameter": "380mm",
+        "thickness": "35mm"
+      },
+      "weight": "1.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Premium leather-wrapped steering wheel with controls."
+    },
+    {
+      "sku": "FUEL-001",
+      "name": "Fuel Pump",
+      "category": "fuel_system",
+      "brand": "FuelPro",
+      "compatibility": ["Toyota", "Honda", "Nissan"],
+      "specifications": {
+        "type": "Electric",
+        "pressure": "3.5 bar",
+        "flow_rate": "120 L/h",
+        "voltage": "12V",
+        "current": "8A"
+      },
+      "dimensions": {
+        "length": "180mm",
+        "diameter": "45mm"
+      },
+      "weight": "1.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J2030"],
+      "description": "High-pressure electric fuel pump for fuel injection systems."
+    },
+    {
+      "sku": "FUEL-002",
+      "name": "Fuel Injector",
+      "category": "fuel_system",
+      "brand": "InjectorTech",
+      "compatibility": ["Ford", "Chevrolet", "Dodge"],
+      "specifications": {
+        "type": "Electronic",
+        "flow_rate": "280 cc/min",
+        "impedance": "12 ohms",
+        "spray_pattern": "Multi-hole",
+        "material": "Stainless Steel"
+      },
+      "dimensions": {
+        "length": "85mm",
+        "diameter": "14mm"
+      },
+      "weight": "0.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J1832"],
+      "description": "Precision fuel injector with multi-hole spray pattern."
+    },
+    {
+      "sku": "FUEL-003",
+      "name": "Fuel Tank",
+      "category": "fuel_system",
+      "brand": "TankTech",
+      "compatibility": ["BMW", "Mercedes", "Audi"],
+      "specifications": {
+        "type": "Plastic",
+        "capacity": "65L",
+        "material": "HDPE",
+        "sensor": "Integrated",
+        "ventilation": "EVAP"
+      },
+      "dimensions": {
+        "length": "800mm",
+        "width": "600mm",
+        "height": "300mm"
+      },
+      "weight": "8.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "DIN 73379"],
+      "description": "High-capacity fuel tank with integrated level sensor."
+    },
+    {
+      "sku": "FUEL-004",
+      "name": "Fuel Pressure Regulator",
+      "category": "fuel_system",
+      "brand": "RegulatorPro",
+      "compatibility": ["Volkswagen", "Skoda", "Seat"],
+      "specifications": {
+        "type": "Vacuum Operated",
+        "pressure": "3.0 bar",
+        "material": "Aluminum",
+        "diaphragm": "Viton",
+        "spring": "Stainless Steel"
+      },
+      "dimensions": {
+        "length": "65mm",
+        "diameter": "35mm"
+      },
+      "weight": "0.3kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Vacuum-operated fuel pressure regulator."
+    },
+    {
+      "sku": "FUEL-005",
+      "name": "Fuel Rail",
+      "category": "fuel_system",
+      "brand": "RailTech",
+      "compatibility": ["Hyundai", "Kia", "Mazda"],
+      "specifications": {
+        "type": "Stainless Steel",
+        "injector_count": 4,
+        "pressure": "3.5 bar",
+        "material": "Stainless Steel",
+        "fittings": "Quick Connect"
+      },
+      "dimensions": {
+        "length": "400mm",
+        "diameter": "12mm"
+      },
+      "weight": "1.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Stainless steel fuel rail for 4-cylinder engines."
+    },
+    {
+      "sku": "INT-001",
+      "name": "Dashboard Cluster",
+      "category": "interior",
+      "brand": "ClusterPro",
+      "compatibility": ["Toyota", "Honda", "Nissan"],
+      "specifications": {
+        "type": "Digital",
+        "display": "LCD",
+        "gauges": "Speedometer, Tachometer, Fuel, Temp",
+        "backlight": "LED",
+        "language": "Multi"
+      },
+      "dimensions": {
+        "length": "280mm",
+        "width": "120mm",
+        "height": "85mm"
+      },
+      "weight": "1.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Digital dashboard cluster with LCD display."
+    },
+    {
+      "sku": "INT-002",
+      "name": "Seat Cover Set",
+      "category": "interior",
+      "brand": "SeatPro",
+      "compatibility": ["Ford", "Chevrolet", "Dodge"],
+      "specifications": {
+        "type": "Neoprene",
+        "fit": "Universal",
+        "color": "Black",
+        "thickness": "3mm",
+        "cleaning": "Machine Washable"
+      },
+      "dimensions": {
+        "front_seats": "Yes",
+        "back_seats": "Yes",
+        "headrests": "Yes"
+      },
+      "weight": "2.5kg",
+      "warranty": "12 months",
+      "certifications": ["ISO 9001"],
+      "description": "Universal neoprene seat covers for protection and style."
+    },
+    {
+      "sku": "INT-003",
+      "name": "Floor Mats",
+      "category": "interior",
+      "brand": "MatTech",
+      "compatibility": ["BMW", "Mercedes", "Audi"],
+      "specifications": {
+        "type": "Rubber",
+        "fit": "Custom",
+        "color": "Black",
+        "thickness": "8mm",
+        "grip": "Anti-slip"
+      },
+      "dimensions": {
+        "front_mats": "Yes",
+        "rear_mats": "Yes",
+        "trunk_mat": "Yes"
+      },
+      "weight": "3.8kg",
+      "warranty": "12 months",
+      "certifications": ["ISO 9001"],
+      "description": "Custom-fit rubber floor mats with anti-slip backing."
+    },
+    {
+      "sku": "INT-004",
+      "name": "Center Console",
+      "category": "interior",
+      "brand": "ConsolePro",
+      "compatibility": ["Volkswagen", "Skoda", "Seat"],
+      "specifications": {
+        "type": "Storage",
+        "material": "Plastic",
+        "storage": "Multi-compartment",
+        "cupholders": 2,
+        "armrest": "Padded"
+      },
+      "dimensions": {
+        "length": "400mm",
+        "width": "200mm",
+        "height": "150mm"
+      },
+      "weight": "2.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Multi-compartment center console with armrest."
+    },
+    {
+      "sku": "INT-005",
+      "name": "Door Panel",
+      "category": "interior",
+      "brand": "PanelTech",
+      "compatibility": ["Hyundai", "Kia", "Mazda"],
+      "specifications": {
+        "type": "Front Left",
+        "material": "Plastic/Fabric",
+        "speaker": "Integrated",
+        "handle": "Included",
+        "window_switch": "Yes"
+      },
+      "dimensions": {
+        "length": "1200mm",
+        "width": "450mm",
+        "thickness": "25mm"
+      },
+      "weight": "3.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Complete door panel with integrated components."
+    },
+    {
+      "sku": "EXT-001",
+      "name": "Front Bumper",
+      "category": "exterior",
+      "brand": "BumperPro",
+      "compatibility": ["Toyota", "Honda", "Nissan"],
+      "specifications": {
+        "type": "Front",
+        "material": "Polypropylene",
+        "color": "Primed",
+        "fog_lights": "Compatible",
+        "sensors": "Parking"
+      },
+      "dimensions": {
+        "length": "1800mm",
+        "width": "200mm",
+        "height": "400mm"
+      },
+      "weight": "8.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Durable front bumper with fog light compatibility."
+    },
+    {
+      "sku": "EXT-002",
+      "name": "Side Mirror",
+      "category": "exterior",
+      "brand": "MirrorTech",
+      "compatibility": ["Ford", "Chevrolet", "Dodge"],
+      "specifications": {
+        "type": "Power",
+        "side": "Left",
+        "glass": "Heated",
+        "turn_signal": "Integrated",
+        "memory": "Yes"
+      },
+      "dimensions": {
+        "length": "280mm",
+        "width": "120mm",
+        "height": "85mm"
+      },
+      "weight": "1.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Power side mirror with heated glass and turn signal."
+    },
+    {
+      "sku": "EXT-003",
+      "name": "Hood",
+      "category": "exterior",
+      "brand": "HoodPro",
+      "compatibility": ["BMW", "Mercedes", "Audi"],
+      "specifications": {
+        "type": "Aluminum",
+        "material": "Aluminum",
+        "color": "Primed",
+        "insulation": "Included",
+        "latches": "Safety"
+      },
+      "dimensions": {
+        "length": "1500mm",
+        "width": "1200mm",
+        "height": "50mm"
+      },
+      "weight": "12.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Lightweight aluminum hood with insulation."
+    },
+    {
+      "sku": "EXT-004",
+      "name": "Tail Light",
+      "category": "exterior",
+      "brand": "LightTech",
+      "compatibility": ["Volkswagen", "Skoda", "Seat"],
+      "specifications": {
+        "type": "LED",
+        "side": "Left",
+        "bulbs": "LED",
+        "lens": "Clear",
+        "housing": "Black"
+      },
+      "dimensions": {
+        "length": "350mm",
+        "width": "150mm",
+        "height": "85mm"
+      },
+      "weight": "1.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "ECE R7"],
+      "description": "Modern LED tail light with clear lens."
+    },
+    {
+      "sku": "EXT-005",
+      "name": "Windshield",
+      "category": "exterior",
+      "brand": "GlassPro",
+      "compatibility": ["Hyundai", "Kia", "Mazda"],
+      "specifications": {
+        "type": "Laminated",
+        "thickness": "6mm",
+        "tint": "Green",
+        "defroster": "Yes",
+        "rain_sensor": "Compatible"
+      },
+      "dimensions": {
+        "length": "1400mm",
+        "width": "850mm",
+        "thickness": "6mm"
+      },
+      "weight": "18.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "ECE R43"],
+      "description": "Laminated windshield with defroster grid."
+    },
+    {
+      "sku": "ACC-001",
+      "name": "Car Cover",
+      "category": "accessories",
+      "brand": "CoverPro",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Outdoor",
+        "material": "Polyester",
+        "waterproof": "Yes",
+        "uv_protection": "Yes",
+        "size": "Large"
+      },
+      "dimensions": {
+        "length": "5000mm",
+        "width": "2000mm",
+        "thickness": "0.5mm"
+      },
+      "weight": "2.8kg",
+      "warranty": "12 months",
+      "certifications": ["ISO 9001"],
+      "description": "Waterproof car cover with UV protection."
+    },
+    {
+      "sku": "ACC-002",
+      "name": "Phone Mount",
+      "category": "accessories",
+      "brand": "MountTech",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Dashboard",
+        "mount": "Suction Cup",
+        "adjustable": "Yes",
+        "rotation": "360°",
+        "size": "Universal"
+      },
+      "dimensions": {
+        "length": "120mm",
+        "width": "85mm",
+        "height": "150mm"
+      },
+      "weight": "0.3kg",
+      "warranty": "12 months",
+      "certifications": ["ISO 9001"],
+      "description": "Universal phone mount with suction cup attachment."
+    },
+    {
+      "sku": "ACC-003",
+      "name": "Dash Cam",
+      "category": "accessories",
+      "brand": "CamPro",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Front/Rear",
+        "resolution": "1080p",
+        "storage": "32GB",
+        "night_vision": "Yes",
+        "gps": "Yes"
+      },
+      "dimensions": {
+        "length": "85mm",
+        "width": "45mm",
+        "height": "25mm"
+      },
+      "weight": "0.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "High-definition dash cam with night vision and GPS."
+    },
+    {
+      "sku": "ACC-004",
+      "name": "Cargo Organizer",
+      "category": "accessories",
+      "brand": "OrganizerPro",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Trunk",
+        "material": "Canvas",
+        "compartments": 6,
+        "collapsible": "Yes",
+        "waterproof": "Yes"
+      },
+      "dimensions": {
+        "length": "800mm",
+        "width": "400mm",
+        "height": "200mm"
+      },
+      "weight": "1.5kg",
+      "warranty": "12 months",
+      "certifications": ["ISO 9001"],
+      "description": "Collapsible cargo organizer with multiple compartments."
+    },
+    {
+      "sku": "ACC-005",
+      "name": "Tire Pressure Gauge",
+      "category": "accessories",
+      "brand": "GaugePro",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Digital",
+        "range": "0-100 PSI",
+        "accuracy": "±1%",
+        "display": "LCD",
+        "battery": "CR2032"
+      },
+      "dimensions": {
+        "length": "120mm",
+        "width": "35mm",
+        "height": "25mm"
+      },
+      "weight": "0.1kg",
+      "warranty": "12 months",
+      "certifications": ["ISO 9001", "DIN 16086"],
+      "description": "Digital tire pressure gauge with high accuracy."
+    }
+  ]
+} 

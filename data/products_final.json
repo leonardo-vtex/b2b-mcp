@@ -1,0 +1,234 @@
+{
+  "products": [
+    {
+      "sku": "SUS-006",
+      "name": "Air Suspension Kit",
+      "category": "suspension",
+      "brand": "AirRide",
+      "compatibility": ["BMW 7 Series", "Mercedes S-Class", "Audi A8"],
+      "specifications": {
+        "type": "Electronic",
+        "pressure": "8 bar",
+        "compressor": "Integrated",
+        "height_sensor": "Yes",
+        "modes": "Comfort/Sport"
+      },
+      "dimensions": {
+        "compressor_length": "200mm",
+        "compressor_width": "150mm",
+        "compressor_height": "100mm"
+      },
+      "weight": "8.5kg",
+      "warranty": "36 months",
+      "certifications": ["ISO 9001", "TÜV Approved"],
+      "description": "Electronic air suspension system for luxury vehicles."
+    },
+    {
+      "sku": "SUS-007",
+      "name": "Coilover Kit",
+      "category": "suspension",
+      "brand": "CoiloverPro",
+      "compatibility": ["Ford Mustang", "Chevrolet Camaro", "Dodge Challenger"],
+      "specifications": {
+        "type": "Adjustable",
+        "damping": "32-way",
+        "height_adjustment": "50mm",
+        "spring_rate": "8kg/mm",
+        "material": "Aluminum"
+      },
+      "dimensions": {
+        "extended_length": "500mm",
+        "compressed_length": "350mm",
+        "body_diameter": "50mm"
+      },
+      "weight": "4.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "TÜV Approved"],
+      "description": "Performance coilover kit with adjustable damping and height."
+    },
+    {
+      "sku": "SUS-008",
+      "name": "Sway Bar Set",
+      "category": "suspension",
+      "brand": "SwayTech",
+      "compatibility": ["BMW M3", "Mercedes AMG", "Audi RS"],
+      "specifications": {
+        "type": "Adjustable",
+        "diameter": "25mm",
+        "material": "Hollow Steel",
+        "bushings": "Polyurethane",
+        "end_links": "Heim Joint"
+      },
+      "dimensions": {
+        "length": "1400mm",
+        "diameter": "25mm",
+        "wall_thickness": "3mm"
+      },
+      "weight": "6.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Adjustable sway bar set for high-performance handling."
+    },
+    {
+      "sku": "SUS-009",
+      "name": "Subframe Brace",
+      "category": "suspension",
+      "brand": "BracePro",
+      "compatibility": ["Honda Civic", "Toyota Corolla", "Nissan Sentra"],
+      "specifications": {
+        "type": "Front",
+        "material": "Steel",
+        "coating": "Powder Coated",
+        "installation": "Bolt-on",
+        "weight": "2.5kg"
+      },
+      "dimensions": {
+        "length": "800mm",
+        "width": "120mm",
+        "thickness": "8mm"
+      },
+      "weight": "2.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Front subframe brace for improved chassis rigidity."
+    },
+    {
+      "sku": "SUS-010",
+      "name": "Trailing Arm",
+      "category": "suspension",
+      "brand": "ArmTech",
+      "compatibility": ["BMW 3 Series", "Mercedes C-Class", "Audi A4"],
+      "specifications": {
+        "type": "Adjustable",
+        "material": "Aluminum",
+        "bushings": "Spherical",
+        "adjustment": "Camber/Toe",
+        "coating": "Anodized"
+      },
+      "dimensions": {
+        "length": "450mm",
+        "width": "35mm",
+        "thickness": "12mm"
+      },
+      "weight": "1.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "Adjustable trailing arm for precise suspension geometry."
+    },
+    {
+      "sku": "IGN-006",
+      "name": "Distributor Rotor",
+      "category": "ignition",
+      "brand": "RotorTech",
+      "compatibility": ["Classic Cars", "Vintage Vehicles"],
+      "specifications": {
+        "type": "Carbon",
+        "material": "Carbon Composite",
+        "resistance": "5000 ohms",
+        "temperature": "200°C",
+        "life": "50000 miles"
+      },
+      "dimensions": {
+        "diameter": "45mm",
+        "height": "25mm",
+        "center_hole": "8mm"
+      },
+      "weight": "0.1kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "High-performance distributor rotor for classic vehicles."
+    },
+    {
+      "sku": "IGN-007",
+      "name": "Ignition Module",
+      "category": "ignition",
+      "brand": "ModulePro",
+      "compatibility": ["GM Vehicles", "Chevrolet", "Pontiac"],
+      "specifications": {
+        "type": "HEI",
+        "voltage": "12V",
+        "current": "6A",
+        "timing": "Adjustable",
+        "protection": "Thermal"
+      },
+      "dimensions": {
+        "length": "85mm",
+        "width": "65mm",
+        "height": "25mm"
+      },
+      "weight": "0.3kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J2030"],
+      "description": "HEI ignition module for GM vehicles."
+    },
+    {
+      "sku": "IGN-008",
+      "name": "Coil Pack Set",
+      "category": "ignition",
+      "brand": "CoilPackPro",
+      "compatibility": ["Ford Focus", "Mazda 3", "Volvo S40"],
+      "specifications": {
+        "type": "Waste Spark",
+        "coils": 4,
+        "voltage": "45000V",
+        "dwell_time": "2.5ms",
+        "material": "Epoxy"
+      },
+      "dimensions": {
+        "length": "200mm",
+        "width": "120mm",
+        "height": "45mm"
+      },
+      "weight": "0.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J2030"],
+      "description": "4-cylinder coil pack set for waste spark ignition."
+    },
+    {
+      "sku": "IGN-009",
+      "name": "Crankshaft Trigger Wheel",
+      "category": "ignition",
+      "brand": "TriggerTech",
+      "compatibility": ["Performance Engines", "Racing Applications"],
+      "specifications": {
+        "type": "36-1",
+        "teeth": 36,
+        "material": "Steel",
+        "diameter": "120mm",
+        "thickness": "3mm"
+      },
+      "dimensions": {
+        "diameter": "120mm",
+        "thickness": "3mm",
+        "center_bore": "25mm"
+      },
+      "weight": "0.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001"],
+      "description": "36-1 trigger wheel for aftermarket engine management."
+    },
+    {
+      "sku": "IGN-010",
+      "name": "Ignition Switch",
+      "category": "ignition",
+      "brand": "SwitchPro",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Keyed",
+        "positions": 4,
+        "voltage": "12V",
+        "current": "30A",
+        "security": "Anti-theft"
+      },
+      "dimensions": {
+        "length": "120mm",
+        "width": "45mm",
+        "height": "35mm"
+      },
+      "weight": "0.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J560"],
+      "description": "Universal ignition switch with anti-theft protection."
+    }
+  ]
+} 

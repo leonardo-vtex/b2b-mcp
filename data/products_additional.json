@@ -1,0 +1,462 @@
+{
+  "products": [
+    {
+      "sku": "BRK-006",
+      "name": "Brake Rotor Set - Front",
+      "category": "brakes",
+      "brand": "RotorMax",
+      "compatibility": ["Toyota Camry", "Honda Accord", "Nissan Altima"],
+      "specifications": {
+        "type": "Vented",
+        "diameter": "300mm",
+        "thickness": "25mm",
+        "material": "Cast Iron",
+        "coating": "Zinc Plated"
+      },
+      "dimensions": {
+        "diameter": "300mm",
+        "thickness": "25mm",
+        "center_bore": "60mm"
+      },
+      "weight": "7.2kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "DOT Approved"],
+      "description": "High-performance front brake rotors for popular sedan models."
+    },
+    {
+      "sku": "BRK-007",
+      "name": "Brake Rotor Set - Rear",
+      "category": "brakes",
+      "brand": "RotorMax",
+      "compatibility": ["Toyota Camry", "Honda Accord", "Nissan Altima"],
+      "specifications": {
+        "type": "Solid",
+        "diameter": "280mm",
+        "thickness": "20mm",
+        "material": "Cast Iron",
+        "coating": "Zinc Plated"
+      },
+      "dimensions": {
+        "diameter": "280mm",
+        "thickness": "20mm",
+        "center_bore": "60mm"
+      },
+      "weight": "5.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "DOT Approved"],
+      "description": "Durable rear brake rotors for sedan applications."
+    },
+    {
+      "sku": "BRK-008",
+      "name": "Brake Fluid",
+      "category": "brakes",
+      "brand": "FluidTech",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "DOT 4",
+        "dry_boiling_point": "230°C",
+        "wet_boiling_point": "155°C",
+        "viscosity": "1500mm²/s",
+        "color": "Clear"
+      },
+      "dimensions": {
+        "volume": "500ml",
+        "container": "Plastic Bottle"
+      },
+      "weight": "0.6kg",
+      "warranty": "36 months",
+      "certifications": ["ISO 9001", "DOT 4", "SAE J1703"],
+      "description": "High-performance DOT 4 brake fluid for all vehicles."
+    },
+    {
+      "sku": "BRK-009",
+      "name": "Brake Hose Set",
+      "category": "brakes",
+      "brand": "HosePro",
+      "compatibility": ["Ford F-150", "Chevrolet Silverado", "Dodge Ram"],
+      "specifications": {
+        "type": "Stainless Steel",
+        "length": "Various",
+        "pressure": "3000 PSI",
+        "material": "Stainless Steel",
+        "fittings": "Banjo"
+      },
+      "dimensions": {
+        "length": "450mm",
+        "diameter": "8mm"
+      },
+      "weight": "0.4kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J1401"],
+      "description": "Stainless steel brake hoses for truck applications."
+    },
+    {
+      "sku": "BRK-010",
+      "name": "Brake Master Cylinder",
+      "category": "brakes",
+      "brand": "MasterTech",
+      "compatibility": ["BMW 3 Series", "Mercedes C-Class", "Audi A4"],
+      "specifications": {
+        "type": "Dual Circuit",
+        "bore_size": "22mm",
+        "material": "Aluminum",
+        "reservoir": "Integrated",
+        "ports": 2
+      },
+      "dimensions": {
+        "length": "180mm",
+        "width": "85mm",
+        "height": "120mm"
+      },
+      "weight": "1.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "TÜV Approved"],
+      "description": "Premium brake master cylinder for luxury vehicles."
+    },
+    {
+      "sku": "FLT-006",
+      "name": "Cabin Air Filter - Premium",
+      "category": "filters",
+      "brand": "CabinElite",
+      "compatibility": ["BMW 5 Series", "Mercedes E-Class", "Audi A6"],
+      "specifications": {
+        "type": "HEPA + Carbon",
+        "filtration_efficiency": "99.97%",
+        "allergen_reduction": "Yes",
+        "odor_removal": "Enhanced",
+        "service_life": "15000 miles"
+      },
+      "dimensions": {
+        "length": "350mm",
+        "width": "250mm",
+        "height": "30mm"
+      },
+      "weight": "0.4kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "HEPA H14", "DIN EN 1822"],
+      "description": "Premium HEPA cabin air filter with enhanced carbon layer."
+    },
+    {
+      "sku": "FLT-007",
+      "name": "Fuel Filter - Diesel",
+      "category": "filters",
+      "brand": "DieselFilter",
+      "compatibility": ["Ford F-250", "Chevrolet 2500", "Dodge 2500"],
+      "specifications": {
+        "type": "Spin-on",
+        "filtration_efficiency": "99.9%",
+        "water_separation": "Enhanced",
+        "pressure_drop": "0.2 bar",
+        "filter_media": "Cellulose"
+      },
+      "dimensions": {
+        "diameter": "95mm",
+        "height": "160mm",
+        "thread_size": "M24x1.5"
+      },
+      "weight": "0.9kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "DIN EN 590", "API CJ-4"],
+      "description": "High-capacity diesel fuel filter with enhanced water separation."
+    },
+    {
+      "sku": "FLT-008",
+      "name": "Transmission Filter - CVT",
+      "category": "filters",
+      "brand": "CVTFilter",
+      "compatibility": ["Nissan Altima", "Toyota Corolla", "Honda Civic"],
+      "specifications": {
+        "type": "Spin-on",
+        "filtration_efficiency": "99.8%",
+        "bypass_valve": "Yes",
+        "filter_media": "Synthetic",
+        "service_life": "40000 miles"
+      },
+      "dimensions": {
+        "diameter": "85mm",
+        "height": "120mm",
+        "thread_size": "M20x1.5"
+      },
+      "weight": "0.7kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "JASO 1A"],
+      "description": "Specialized transmission filter for CVT applications."
+    },
+    {
+      "sku": "FLT-009",
+      "name": "Power Steering Filter",
+      "category": "filters",
+      "brand": "SteeringFilter",
+      "compatibility": ["Ford Mustang", "Chevrolet Camaro", "Dodge Challenger"],
+      "specifications": {
+        "type": "In-line",
+        "filtration_efficiency": "99.5%",
+        "flow_rate": "15 L/min",
+        "pressure": "1500 PSI",
+        "material": "Aluminum"
+      },
+      "dimensions": {
+        "length": "120mm",
+        "diameter": "45mm",
+        "inlet_size": "10mm"
+      },
+      "weight": "0.3kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J1273"],
+      "description": "Performance power steering filter for high-performance vehicles."
+    },
+    {
+      "sku": "FLT-010",
+      "name": "Hydraulic Filter",
+      "category": "filters",
+      "brand": "HydraulicPro",
+      "compatibility": ["Heavy Equipment", "Construction Vehicles"],
+      "specifications": {
+        "type": "Spin-on",
+        "filtration_efficiency": "99.9%",
+        "bypass_valve": "Yes",
+        "filter_media": "Synthetic",
+        "pressure": "5000 PSI"
+      },
+      "dimensions": {
+        "diameter": "120mm",
+        "height": "200mm",
+        "thread_size": "M30x2"
+      },
+      "weight": "1.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "ISO 16889"],
+      "description": "Heavy-duty hydraulic filter for construction equipment."
+    },
+    {
+      "sku": "ENG-006",
+      "name": "Timing Chain Kit",
+      "category": "engine",
+      "brand": "ChainTech",
+      "compatibility": ["BMW 3 Series", "Mercedes C-Class", "Audi A4"],
+      "specifications": {
+        "type": "Dual Row",
+        "links": 120,
+        "material": "Steel",
+        "tensioner": "Hydraulic",
+        "guides": "Plastic"
+      },
+      "dimensions": {
+        "length": "900mm",
+        "width": "15mm",
+        "thickness": "8mm"
+      },
+      "weight": "1.2kg",
+      "warranty": "36 months",
+      "certifications": ["ISO 9001", "DIN 8187"],
+      "description": "High-performance timing chain kit for luxury vehicles."
+    },
+    {
+      "sku": "ENG-007",
+      "name": "Oil Pump",
+      "category": "engine",
+      "brand": "PumpTech",
+      "compatibility": ["Toyota Camry", "Honda Accord", "Nissan Altima"],
+      "specifications": {
+        "type": "Gear Pump",
+        "flow_rate": "80 L/min",
+        "pressure": "5 bar",
+        "material": "Aluminum",
+        "drive": "Crankshaft"
+      },
+      "dimensions": {
+        "length": "120mm",
+        "width": "85mm",
+        "height": "65mm"
+      },
+      "weight": "1.8kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J300"],
+      "description": "Reliable oil pump for 4-cylinder engines."
+    },
+    {
+      "sku": "ENG-008",
+      "name": "Crankshaft",
+      "category": "engine",
+      "brand": "CrankPro",
+      "compatibility": ["Ford Mustang", "Chevrolet Camaro", "Dodge Challenger"],
+      "specifications": {
+        "type": "Forged Steel",
+        "journals": 8,
+        "material": "4340 Steel",
+        "balance": "Internal",
+        "nitriding": "Yes"
+      },
+      "dimensions": {
+        "length": "650mm",
+        "main_journal_diameter": "65mm",
+        "rod_journal_diameter": "55mm"
+      },
+      "weight": "25kg",
+      "warranty": "36 months",
+      "certifications": ["ISO 9001", "SAE J434"],
+      "description": "Performance crankshaft for high-performance engines."
+    },
+    {
+      "sku": "ENG-009",
+      "name": "Camshaft Set",
+      "category": "engine",
+      "brand": "CamPro",
+      "compatibility": ["BMW M3", "Mercedes AMG", "Audi RS"],
+      "specifications": {
+        "type": "Performance",
+        "lobes": 16,
+        "material": "Billet Steel",
+        "profile": "Aggressive",
+        "nitriding": "Yes"
+      },
+      "dimensions": {
+        "length": "450mm",
+        "diameter": "35mm",
+        "lobe_height": "12mm"
+      },
+      "weight": "8.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "SAE J434"],
+      "description": "Performance camshaft set for high-performance engines."
+    },
+    {
+      "sku": "ENG-010",
+      "name": "Engine Block",
+      "category": "engine",
+      "brand": "BlockTech",
+      "compatibility": ["Chevrolet Corvette", "Ford GT", "Dodge Viper"],
+      "specifications": {
+        "type": "Aluminum",
+        "cylinders": 8,
+        "material": "A356 Aluminum",
+        "bore": "103mm",
+        "stroke": "92mm"
+      },
+      "dimensions": {
+        "length": "750mm",
+        "width": "450mm",
+        "height": "350mm"
+      },
+      "weight": "45kg",
+      "warranty": "36 months",
+      "certifications": ["ISO 9001", "SAE J434"],
+      "description": "Lightweight aluminum engine block for high-performance applications."
+    },
+    {
+      "sku": "ELC-006",
+      "name": "Battery - Lithium",
+      "category": "electrical",
+      "brand": "LithiumPower",
+      "compatibility": ["Tesla Model 3", "Tesla Model Y", "Electric Vehicles"],
+      "specifications": {
+        "type": "Lithium Ion",
+        "capacity": "75kWh",
+        "voltage": "400V",
+        "chemistry": "LiFePO4",
+        "cycles": "3000"
+      },
+      "dimensions": {
+        "length": "2000mm",
+        "width": "1500mm",
+        "height": "150mm"
+      },
+      "weight": "450kg",
+      "warranty": "96 months",
+      "certifications": ["ISO 9001", "UN 38.3", "IEC 62133"],
+      "description": "High-capacity lithium battery pack for electric vehicles."
+    },
+    {
+      "sku": "ELC-007",
+      "name": "LED Headlight - Matrix",
+      "category": "electrical",
+      "brand": "MatrixLight",
+      "compatibility": ["BMW 7 Series", "Mercedes S-Class", "Audi A8"],
+      "specifications": {
+        "type": "Matrix LED",
+        "brightness": "3000 lumens",
+        "beam_pattern": "Adaptive",
+        "color_temp": "5500K",
+        "lifespan": "100000 hours"
+      },
+      "dimensions": {
+        "length": "500mm",
+        "width": "200mm",
+        "height": "150mm"
+      },
+      "weight": "3.5kg",
+      "warranty": "36 months",
+      "certifications": ["ISO 9001", "ECE R112", "SAE J1383"],
+      "description": "Advanced matrix LED headlight with adaptive beam control."
+    },
+    {
+      "sku": "ELC-008",
+      "name": "Wireless Charger",
+      "category": "electrical",
+      "brand": "ChargeTech",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Qi Wireless",
+        "power": "15W",
+        "efficiency": "85%",
+        "temperature": "Auto-regulate",
+        "protection": "Overcharge"
+      },
+      "dimensions": {
+        "length": "150mm",
+        "width": "100mm",
+        "height": "15mm"
+      },
+      "weight": "0.3kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "Qi 1.3", "FCC Part 15"],
+      "description": "High-power wireless charging pad for mobile devices."
+    },
+    {
+      "sku": "ELC-009",
+      "name": "GPS Tracker",
+      "category": "electrical",
+      "brand": "TrackPro",
+      "compatibility": ["Universal"],
+      "specifications": {
+        "type": "Real-time",
+        "accuracy": "3m",
+        "battery": "7 days",
+        "connectivity": "4G LTE",
+        "tracking": "24/7"
+      },
+      "dimensions": {
+        "length": "80mm",
+        "width": "50mm",
+        "height": "20mm"
+      },
+      "weight": "0.1kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "FCC Part 15", "CE"],
+      "description": "Real-time GPS tracker with extended battery life."
+    },
+    {
+      "sku": "ELC-010",
+      "name": "Solar Panel Kit",
+      "category": "electrical",
+      "brand": "SolarTech",
+      "compatibility": ["RV", "Camping", "Off-grid"],
+      "specifications": {
+        "type": "Monocrystalline",
+        "power": "200W",
+        "efficiency": "20%",
+        "voltage": "12V",
+        "weather": "IP65"
+      },
+      "dimensions": {
+        "length": "1200mm",
+        "width": "800mm",
+        "thickness": "35mm"
+      },
+      "weight": "12kg",
+      "warranty": "120 months",
+      "certifications": ["ISO 9001", "IEC 61215", "UL 1703"],
+      "description": "High-efficiency solar panel kit for mobile applications."
+    }
+  ]
+} 
