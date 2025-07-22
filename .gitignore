@@ -110,3 +110,4 @@ dmypy.json
 # OpenAI API keys (extra protection)
 openai_api_key.txt
 api_keys.txt 
+.vercel

@@ -1,27 +1,13 @@
 # 🚗 B2B Automotive Parts Procurement MCP Demo
 
-A cutting-edge demonstration of **Agent-to-Agent (A2A)** procurement systems using **Model Context Protocol (MCP)** for intelligent automotive parts sourcing.
-
-![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.104+-green.svg)
-![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4-purple.svg)
-![MCP](https://img.shields.io/badge/Protocol-MCP-orange.svg)
-
-## 🌟 Features
-
-- **🤖 A2A Architecture**: 1 main procurement agent coordinating with 10 seller agents
-- **🧠 AI-Powered**: OpenAI GPT-4 for intelligent query processing and recommendations
-- **📊 Real-time Negotiation**: Dynamic pricing with bulk discounts and supplier competition
-- **🎨 Modern UI**: Dark mode interface with glassmorphism effects
-- **📈 100+ Products**: Comprehensive automotive parts catalog
-- **⚡ Fast Processing**: Real-time responses in 2-8 seconds
+A **Model Context Protocol (MCP)** demonstration showcasing **Agent-to-Agent (A2A)** procurement in the automotive industry. This system uses AI to intelligently parse procurement queries and coordinate between a main procurement agent and 10 specialized supplier agents.
 
 ## 🏗️ Architecture
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
-│   Frontend UI   │    │  FastAPI Backend│    │   OpenAI GPT-4  │
-│   (Dark Mode)   │◄──►│  (MCP Protocol) │◄──►│   (AI Agent)    │
+│   Frontend UI   │    │  Node.js Server │    │   OpenAI GPT-4  │
+│   (Dark Mode)   │◄──►│  (TypeScript)   │◄──►│   (AI Agent)    │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
                                 │
                                 ▼
@@ -36,178 +22,199 @@ A cutting-edge demonstration of **Agent-to-Agent (A2A)** procurement systems usi
                        └─────────────────┘
 ```
 
+## ✨ Features
+
+- **🤖 AI-Powered Query Parsing**: Natural language processing for procurement requests
+- **🏢 Multi-Agent Coordination**: 10 specialized supplier agents with unique catalogs
+- **📊 Intelligent Scoring**: AI-driven offer evaluation and ranking
+- **🎨 Modern Dark UI**: Beautiful, responsive interface with glassmorphism effects
+- **⚡ Real-time Processing**: Fast response times with intelligent caching
+- **🔍 Advanced Search**: Fuzzy matching and category-based filtering
+- **💰 Smart Pricing**: Bulk discounts, shipping calculations, and supplier ratings
+
 ## 🚀 Quick Start
 
 ### Prerequisites
-
-- Python 3.9+
+- Node.js 18+ 
+- npm or yarn
 - OpenAI API Key
-- Git
 
 ### Installation
 
 1. **Clone the repository**
    ```bash
-   git clone <your-repo-url>
-   cd MCP
+   git clone https://github.com/leonardo-vtex/mcp.git
+   cd mcp
    ```
 
 2. **Install dependencies**
    ```bash
-   pip install -r requirements.txt
+   npm install
    ```
 
-3. **Set up environment variables**
+3. **Configure environment variables**
    ```bash
-   cp env.example .env
-   # Edit .env and add your OpenAI API key
+   cp .env.example .env
+   # Edit .env and add your OPENAI_API_KEY
    ```
 
-4. **Run the system**
+4. **Start the development server**
    ```bash
-   # Start the backend server
-   python3 backend/main.py
-   
-   # Open the frontend in your browser
-   open frontend/index.html
+   npm run dev
+   ```
+
+5. **Open your browser**
+   ```
+   http://localhost:3000
    ```
 
 ## 🎯 Demo Examples
 
-Try these queries to see the system in action:
+Try these example queries to see the system in action:
 
-### Basic Queries
-- `"I need to buy 50 brake pads for Toyota Camry"`
-- `"Looking for 100 air filters with delivery within 5 days"`
-- `"Need 25 spark plugs for Honda Civic, premium quality"`
+1. **"I need brake pads for Toyota Camry"**
+   - Parses: Category=brakes, Brand=Toyota
+   - Returns: Multiple supplier offers with pricing
 
-### Advanced Queries
-- `"200 premium brake pads for BMW vehicles with delivery within 3 days and budget under $10,000"`
-- `"500 air filters from Bosch or Mann brands for fleet maintenance"`
-- `"URGENT: Need 50 ignition coils for Toyota Camry 2020 models, fastest delivery possible"`
+2. **"Looking for 100 air filters, urgent delivery"**
+   - Parses: Category=filters, Quantity=100, Urgency=high
+   - Returns: Prioritized offers with fast delivery
 
-### Enterprise Queries
-- `"Procuring complete engine maintenance kit: 100 oil filters, 50 spark plugs, 25 air filters"`
-- `"Evaluating suppliers for 1000 suspension components with 2-year warranty and ISO certification"`
+3. **"Need premium engine oil filters for BMW"**
+   - Parses: Category=filters, Brand=BMW, Price=premium
+   - Returns: High-quality supplier recommendations
+
+4. **"50 suspension parts for Honda Civic"**
+   - Parses: Category=suspension, Brand=Honda, Quantity=50
+   - Returns: Bulk pricing and availability
+
+5. **"Bulk order: 500 transmission components"**
+   - Parses: Category=transmission, Quantity=500
+   - Returns: Maximum bulk discounts and volume pricing
 
 ## 🔧 API Endpoints
 
-### Core Endpoints
+### Health Check
+```http
+GET /health
+```
 
-- `POST /procure` - Main procurement endpoint
-- `GET /health` - Health check
-- `GET /products` - Get available products
-- `GET /suppliers` - Get supplier information
-- `POST /debug` - Debug query parsing and matching
+### Get Products
+```http
+GET /products?limit=10
+```
 
-### Example API Call
+### Get Suppliers
+```http
+GET /suppliers
+```
 
-```bash
-curl -X POST "http://localhost:8000/procure" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "query": "I need 50 brake pads for Toyota Camry",
-    "quantity": 50
-  }'
+### Procurement Request
+```http
+POST /procure
+Content-Type: application/json
+
+{
+  "query": "I need 50 brake pads for Toyota Camry",
+  "quantity": 50,
+  "urgency": "high",
+  "price_preference": "mid-range"
+}
 ```
 
 ## 📊 Data Structure
 
-### Products (100+ items)
-- **Categories**: Brakes, Filters, Engine, Electrical, Suspension, Ignition, etc.
-- **Specifications**: SKU, Brand, Compatibility, Dimensions, Certifications
-- **Pricing**: Base prices with supplier variations
+### Product Catalog
+- **100+ Complete References**: SKU, name, category, brand, specifications
+- **Automotive Focus**: Brakes, filters, engine, suspension, steering, etc.
+- **Rich Metadata**: Dimensions, weight, warranty, certifications
 
-### Suppliers (10 agents)
-- **Specializations**: Each supplier focuses on specific categories
-- **Pricing Strategies**: Different multipliers and discount tiers
-- **Business Rules**: Minimum orders, payment terms, shipping costs
+### Supplier Network
+- **10 Specialized Agents**: Each with unique product focus
+- **Dynamic Pricing**: Rating-based multipliers and bulk discounts
+- **Location & Delivery**: Geographic distribution and shipping options
 
 ## 🎨 Frontend Features
 
-- **Dark Mode Design**: Modern glassmorphism interface
-- **Real-time Search**: Instant results with loading animations
-- **Interactive Examples**: Quick demo queries
-- **Responsive Design**: Works on desktop and mobile
-- **Visual Feedback**: Hover effects and transitions
+- **Dark Mode Design**: Modern glassmorphism with neon accents
+- **Responsive Layout**: Works on desktop, tablet, and mobile
+- **Real-time Search**: Instant feedback and loading states
+- **Interactive Cards**: Hover effects and detailed offer information
+- **AI Recommendations**: Intelligent suggestions based on query analysis
 
 ## 🔍 How It Works
 
-### 1. Query Processing
-The system uses OpenAI GPT-4 to parse natural language queries and extract:
-- Product category
-- Brand preferences
-- Quantity requirements
-- Urgency level
-- Price preferences
-
-### 2. Agent Coordination
-The main procurement agent:
-- Finds matching products
-- Coordinates with 10 supplier agents
-- Collects competitive offers
-- Calculates optimal pricing
-
-### 3. AI Recommendations
-GPT-4 analyzes all offers and provides:
-- Best value recommendations
-- Negotiation strategies
-- Alternative suppliers
-- Cost optimization tips
+1. **Query Input**: User enters natural language procurement request
+2. **AI Parsing**: OpenAI GPT-4 extracts structured data (category, brand, quantity, etc.)
+3. **Product Matching**: Fuzzy search across 100+ automotive products
+4. **Supplier Coordination**: 10 agents compete with specialized offers
+5. **Intelligent Scoring**: AI evaluates offers based on price, rating, delivery, discounts
+6. **Recommendations**: System provides optimization suggestions
+7. **Results Display**: Beautiful cards showing best offers with detailed breakdowns
 
 ## 🛠️ Technical Stack
 
-- **Backend**: FastAPI + Python 3.9+
-- **Frontend**: HTML5 + CSS3 + JavaScript
-- **AI**: OpenAI GPT-4 API
-- **Protocol**: Model Context Protocol (MCP)
+- **Backend**: Node.js + Express + TypeScript
+- **Frontend**: Vanilla HTML/CSS/JavaScript (Dark Mode)
+- **AI**: OpenAI GPT-4 for query parsing
 - **Data**: JSON files with 100+ products and 10 suppliers
+- **Deployment**: Vercel-ready configuration
 
 ## 📁 Project Structure
 
 ```
 MCP/
-├── backend/
-│   └── main.py              # FastAPI server with MCP implementation
-├── frontend/
-│   └── index.html           # Dark mode UI
+├── src/
+│   ├── types/           # TypeScript interfaces
+│   ├── services/        # Business logic
+│   │   ├── dataService.ts
+│   │   ├── openaiService.ts
+│   │   └── procurementService.ts
+│   └── server.ts        # Express server
+├── public/
+│   └── index.html       # Frontend UI
 ├── data/
-│   ├── products.json        # Main product catalog
+│   ├── products.json    # Product catalog
 │   ├── products_extended.json
 │   ├── products_additional.json
 │   ├── products_final.json
-│   └── suppliers.json       # Supplier agent configurations
-├── docs/
-│   └── README.md           # Detailed documentation
-├── requirements.txt         # Python dependencies
-├── setup.py                # Installation script
-├── test_system.py          # System validation
-├── env.example             # Environment template
-└── README.md              # This file
+│   └── suppliers.json   # Supplier network
+├── package.json
+├── tsconfig.json
+└── vercel.json
+```
+
+## 🚀 Deployment
+
+### Vercel Deployment
+1. Connect your GitHub repository to Vercel
+2. Set environment variable: `OPENAI_API_KEY`
+3. Deploy automatically on push to main
+
+### Local Production
+```bash
+npm run build
+npm start
 ```
 
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+MIT License - see [LICENSE](LICENSE) file for details.
 
 ## 🙏 Acknowledgments
 
 - OpenAI for GPT-4 API
-- FastAPI for the web framework
-- The MCP community for protocol inspiration
-
-## 📞 Support
-
-For questions or support, please open an issue in this repository.
+- Vercel for deployment platform
+- Automotive industry experts for product data
 
 ---
 
-**Built with ❤️ for the future of B2B procurement** 
+**Built with ❤️ for the MCP (Model Context Protocol) community** 
