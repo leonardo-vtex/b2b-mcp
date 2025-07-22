@@ -3,16 +3,16 @@
 import React, { useState } from 'react';
 
 const QUICK_EXAMPLES = [
-  'I need to buy 50 brake pads for Toyota…',
-  'Looking for 100 air filters with delivery…',
-  'Need 25 spark plugs for Honda Civic, …',
-  'Searching for 75 oil filters, best price f…',
-  'Want 10 alternators for Ford F-150, n…',
-  '200 premium brake pads for BMW ve…',
-  '500 air filters from Bosch or Mann bra…',
-  'URGENT: Need 50 ignition coils for T…',
-  'Complete engine maintenance kit: 10…',
-  '1000 suspension components with 2-…',
+  'I need to buy 50 brake pads for Toyota Camry 2020 models',
+  'Looking for 100 air filters with delivery in less than a week',
+  'Need 25 spark plugs for Honda Civic, 2018, NGK brand',
+  'Searching for 75 oil filters, best price for bulk order',
+  'Want 10 alternators for Ford F-150, new or refurbished',
+  '200 premium brake pads for BMW vehicles, OEM only',
+  '500 air filters from Bosch or Mann brands, any model',
+  'URGENT: Need 50 ignition coils for Toyota Camry 2020 models',
+  'Complete engine maintenance kit: 10 sets for Nissan Versa',
+  '1000 suspension components with 2-year warranty, mixed brands',
 ];
 
 const MOCK_AI_RECOMMENDATIONS = `1. Exhaust Masters offers the most cost-effective solution at $897.60 for 100 air filters with a delivery time of 4 days. This meets the delivery requirement and offers the best price.\n\n2. Steering Solutions is a viable alternative if, for any reason, Exhaust Masters cannot fulfill the order. However, their offer is slightly more expensive at $928.80 for the same quantity and delivery time.\n\n3. It may be beneficial to negotiate with both suppliers for a better price or faster delivery time, given the volume of the order.`;
