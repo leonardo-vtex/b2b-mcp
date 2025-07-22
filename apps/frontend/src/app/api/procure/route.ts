@@ -346,17 +346,25 @@ class ProcurementService {
       return recommendations;
     }
     const bestOffer = offers[0];
-    if (bestOffer.final_price > 1000) {
-      recommendations.push('Consider ordering in larger quantities to qualify for bulk discounts.');
+    // Recomendación principal basada en el mejor match
+    recommendations.push(
+      `${bestOffer.supplier.name} offers the best solution for ${bestOffer.product.name}` +
+      (parsedQuery.brand ? ` compatible with ${parsedQuery.brand}` : '') +
+      (parsedQuery.quantity ? ` at a quantity of ${parsedQuery.quantity}` : '') +
+      ` for $${bestOffer.final_price.toFixed(2)} (unit: $${bestOffer.price.toFixed(2)}). Delivery: ${bestOffer.delivery_time}.`
+    );
+    // Alternativa si hay más de un proveedor
+    if (offers.length > 1) {
+      const alt = offers[1];
+      recommendations.push(
+        `${alt.supplier.name} is an alternative for ${alt.product.name}` +
+        (parsedQuery.brand ? ` compatible with ${parsedQuery.brand}` : '') +
+        ` at $${alt.final_price.toFixed(2)} (unit: $${alt.price.toFixed(2)}). Delivery: ${alt.delivery_time}.`
+      );
     }
-    if (bestOffer.supplier.rating >= 4.5) {
-      recommendations.push(`Highly recommended supplier: ${bestOffer.supplier.name} (${bestOffer.supplier.rating}/5 rating)`);
-    }
-    if (parsedQuery.urgency === 'high') {
-      recommendations.push('For urgent orders, consider suppliers with faster delivery times.');
-    }
-    if (parsedQuery.quantity && parsedQuery.quantity < 50) {
-      recommendations.push('Consider ordering larger quantities to benefit from bulk pricing.');
+    // Sugerencia de negociación
+    if (offers.length > 1) {
+      recommendations.push('It may be beneficial to negotiate with both suppliers for a better price or faster delivery time, given the volume of the order.');
     }
     return recommendations;
   }
