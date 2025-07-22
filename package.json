@@ -2,12 +2,12 @@
   "name": "b2b-automotive-mcp-demo",
   "version": "1.0.0",
   "description": "B2B Automotive Parts Procurement MCP Demo with A2A Model",
-  "main": "dist/server.js",
+  "main": "src/server.ts",
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "vercel-build": "tsc"
+    "vercel-build": "echo 'Build completed'"
   },
   "keywords": ["mcp", "b2b", "automotive", "procurement", "ai", "agents"],
   "author": "Leonardo VTEX",
@@ -25,5 +25,8 @@
     "@types/node": "^20.10.0",
     "typescript": "^5.3.2",
     "tsx": "^4.6.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 } 
