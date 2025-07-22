@@ -91,11 +91,26 @@ class DataService {
         'data/products_extended.json',
         'data/products_additional.json',
         'data/products_final.json',
+        'data/products_brakes.json',
+        'data/products_filters.json',
+        'data/products_engine.json',
+        'data/products_electrical.json',
+        'data/products_suspension.json'
       ];
       this.products = [];
       for (const file of productFiles) {
         try {
-          const filePath = path.join(process.cwd(), file);
+          // Try to find the file relative to the project root
+          let filePath = path.join(process.cwd(), file);
+          if (!fs.existsSync(filePath)) {
+            // Try from project root
+            filePath = path.join(process.cwd(), '..', '..', file);
+          }
+          if (!fs.existsSync(filePath)) {
+            // Try from current directory
+            filePath = path.join(__dirname, '..', '..', '..', '..', file);
+          }
+          
           if (fs.existsSync(filePath)) {
             const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
             if (Array.isArray(data)) {
@@ -109,7 +124,14 @@ class DataService {
         }
       }
       // Load suppliers
-      const suppliersPath = path.join(process.cwd(), 'data/suppliers.json');
+      let suppliersPath = path.join(process.cwd(), 'data/suppliers.json');
+      if (!fs.existsSync(suppliersPath)) {
+        suppliersPath = path.join(process.cwd(), '..', '..', 'data/suppliers.json');
+      }
+      if (!fs.existsSync(suppliersPath)) {
+        suppliersPath = path.join(__dirname, '..', '..', '..', '..', 'data/suppliers.json');
+      }
+      
       if (fs.existsSync(suppliersPath)) {
         const suppliersData = JSON.parse(fs.readFileSync(suppliersPath, 'utf8'));
         this.suppliers = Array.isArray(suppliersData) ? suppliersData : suppliersData.suppliers || [];
@@ -148,14 +170,70 @@ class OpenAIService {
   async parseQuery(query: string): Promise<ParsedQuery> {
     // --- Context parser mejorado ---
     const lowerQuery = query.toLowerCase();
-    // Lista de productos clave
-    const productKeywords = [
-      'brake pads', 'brake pad', 'air filter', 'oil filter', 'spark plug', 'alternator', 'ignition coil', 'engine kit', 'suspension component', 'rotor', 'battery', 'cabin air filter', 'fuel pump', 'timing chain', 'crankshaft', 'camshaft', 'brake rotor', 'brake fluid', 'brake hose', 'master cylinder'
-    ];
+    
+    // Mapeo de productos a categorías correctas
+    const productToCategoryMap: Record<string, string> = {
+      'brake pads': 'brakes',
+      'brake pad': 'brakes',
+      'brake rotor': 'brakes',
+      'brake fluid': 'brakes',
+      'brake hose': 'brakes',
+      'master cylinder': 'brakes',
+      'air filter': 'filters',
+      'oil filter': 'filters',
+      'cabin air filter': 'filters',
+      'fuel filter': 'filters',
+      'transmission filter': 'filters',
+      'power steering filter': 'filters',
+      'hydraulic filter': 'filters',
+      'spark plug': 'engine',
+      'alternator': 'electrical',
+      'ignition coil': 'electrical',
+      'engine kit': 'engine',
+      'timing chain': 'engine',
+      'crankshaft': 'engine',
+      'camshaft': 'engine',
+      'oil pump': 'engine',
+      'engine block': 'engine',
+      'suspension component': 'suspension',
+      'shock absorber': 'suspension',
+      'spring': 'suspension',
+      'control arm': 'suspension',
+      'battery': 'electrical',
+      'led headlight': 'electrical',
+      'wireless charger': 'electrical',
+      'gps tracker': 'electrical',
+      'solar panel': 'electrical',
+      'fuel pump': 'fuel',
+      'fuel injector': 'fuel',
+      'fuel tank': 'fuel',
+      'steering wheel': 'steering',
+      'steering rack': 'steering',
+      'tie rod': 'steering',
+      'radiator': 'cooling',
+      'water pump': 'cooling',
+      'thermostat': 'cooling',
+      'exhaust pipe': 'exhaust',
+      'muffler': 'exhaust',
+      'catalytic converter': 'exhaust',
+      'clutch': 'transmission',
+      'gearbox': 'transmission',
+      'drive shaft': 'transmission'
+    };
+    
+    // Lista de productos clave para extraer nombre
+    const productKeywords = Object.keys(productToCategoryMap);
     let product_name = null;
-    for (const word of productKeywords) {
-      if (lowerQuery.includes(word)) product_name = word;
+    let product_category = null;
+    
+    for (const keyword of productKeywords) {
+      if (lowerQuery.includes(keyword)) {
+        product_name = keyword;
+        product_category = productToCategoryMap[keyword];
+        break;
+      }
     }
+    
     // Extrae modelo y año
     let model = null;
     let year = null;
@@ -164,24 +242,30 @@ class OpenAIService {
       model = modelYearMatch[1].charAt(0).toUpperCase() + modelYearMatch[1].slice(1);
       year = modelYearMatch[2];
     }
+    
     // Extrae marca
     const brands = ['toyota', 'honda', 'nissan', 'ford', 'chevrolet', 'bmw', 'mercedes', 'audi', 'volkswagen', 'hyundai', 'kia', 'mazda'];
     let brand = null;
     for (const b of brands) {
       if (lowerQuery.includes(b)) brand = b.charAt(0).toUpperCase() + b.slice(1);
     }
+    
     // Extrae cantidad
     const quantityMatch = lowerQuery.match(/(\d+)/);
     const quantity = quantityMatch ? parseInt(quantityMatch[1]) : null;
+    
     // Extrae urgencia
     const urgency = lowerQuery.includes('urgent') || lowerQuery.includes('asap') ? 'high' : lowerQuery.includes('soon') ? 'medium' : null;
+    
     // Extrae preferencia de precio
     const pricePreference = lowerQuery.includes('cheap') || lowerQuery.includes('budget') ? 'budget' : lowerQuery.includes('premium') || lowerQuery.includes('high-end') ? 'premium' : lowerQuery.includes('mid') ? 'mid-range' : null;
+    
     // Producto compuesto (ej: brake pads for Toyota Camry 2020)
     let compositeBrand = brand;
     if (model && year) compositeBrand = `${brand || ''} ${model} ${year}`.trim();
+    
     return {
-      product_category: product_name ? product_name.split(' ')[0] : null,
+      product_category,
       product_name,
       brand: compositeBrand || brand,
       quantity,
@@ -203,6 +287,7 @@ class ProcurementService {
     const startTime = Date.now();
     try {
       const parsedQuery = await this.openaiService.parseQuery(request.query);
+      
       let matchingProducts = this.findMatchingProducts(parsedQuery);
       // --- MEJORA: Prioriza coincidencia exacta de nombre y compatibilidad ---
       if (parsedQuery.product_name && parsedQuery.brand) {
@@ -405,10 +490,22 @@ class ProcurementService {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const procurementService = new ProcurementService();
-    const response = await procurementService.processProcurementRequest(body);
+    
+    // Forward request to backend MCP service
+    const backendResponse = await fetch('http://localhost:4000/api/procure', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    
+    if (!backendResponse.ok) {
+      throw new Error('Backend service unavailable');
+    }
+    
+    const response = await backendResponse.json();
     return NextResponse.json(response);
   } catch (error) {
+    console.error('Frontend API error:', error);
     const message = (error as Error).message || 'Internal error';
     return NextResponse.json({ error: message }, { status: 500 });
   }

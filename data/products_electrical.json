@@ -1,0 +1,47 @@
+[
+  {
+    "sku": "ELC-001",
+    "name": "Car Battery - AGM",
+    "category": "electrical",
+    "brand": "Toyota",
+    "compatibility": ["Toyota Camry 2020", "Toyota Corolla 2020"],
+    "supplier_id": "SUP-051",
+    "price": 120
+  },
+  {
+    "sku": "ELC-002",
+    "name": "Alternator",
+    "category": "electrical",
+    "brand": "Honda",
+    "compatibility": ["Honda Civic 2019", "Honda Accord 2020"],
+    "supplier_id": "SUP-052",
+    "price": 180
+  },
+  {
+    "sku": "ELC-003",
+    "name": "Starter Motor",
+    "category": "electrical",
+    "brand": "Bosch",
+    "compatibility": ["Ford F-150 2020", "Chevrolet Silverado 2020"],
+    "supplier_id": "SUP-053",
+    "price": 95
+  },
+  {
+    "sku": "ELC-004",
+    "name": "Ignition Coil",
+    "category": "electrical",
+    "brand": "NGK",
+    "compatibility": ["Nissan Altima 2019", "Nissan Sentra 2020"],
+    "supplier_id": "SUP-051",
+    "price": 45
+  },
+  {
+    "sku": "ELC-005",
+    "name": "LED Headlight Bulb",
+    "category": "electrical",
+    "brand": "Philips",
+    "compatibility": ["BMW 3 Series 2020", "Mercedes C-Class 2020"],
+    "supplier_id": "SUP-052",
+    "price": 65
+  }
+] 

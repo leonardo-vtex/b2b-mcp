@@ -1,0 +1,47 @@
+[
+  {
+    "sku": "ENG-001",
+    "name": "Engine Oil - Synthetic 5W-30",
+    "category": "engine",
+    "brand": "Toyota",
+    "compatibility": ["Toyota Camry 2020", "Toyota Corolla 2020"],
+    "supplier_id": "SUP-031",
+    "price": 40
+  },
+  {
+    "sku": "ENG-002",
+    "name": "Engine Oil Filter",
+    "category": "engine",
+    "brand": "Honda",
+    "compatibility": ["Honda Civic 2019", "Honda Accord 2020"],
+    "supplier_id": "SUP-032",
+    "price": 25
+  },
+  {
+    "sku": "ENG-003",
+    "name": "Spark Plugs - Iridium",
+    "category": "engine",
+    "brand": "NGK",
+    "compatibility": ["Ford F-150 2020", "Chevrolet Silverado 2020"],
+    "supplier_id": "SUP-033",
+    "price": 35
+  },
+  {
+    "sku": "ENG-004",
+    "name": "Timing Belt Kit",
+    "category": "engine",
+    "brand": "Gates",
+    "compatibility": ["Nissan Altima 2019", "Nissan Sentra 2020"],
+    "supplier_id": "SUP-031",
+    "price": 120
+  },
+  {
+    "sku": "ENG-005",
+    "name": "Water Pump",
+    "category": "engine",
+    "brand": "Bosch",
+    "compatibility": ["BMW 3 Series 2020", "Mercedes C-Class 2020"],
+    "supplier_id": "SUP-032",
+    "price": 85
+  }
+] 

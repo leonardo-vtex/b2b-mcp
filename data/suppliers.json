@@ -1,5 +1,92 @@
 [
-  {"id": 1, "name": "AutoParts Pro", "specialization": "brakes", "location": "New York"},
-  {"id": 2, "name": "Filter King", "specialization": "filters", "location": "Los Angeles"},
-  {"id": 3, "name": "Engine Masters", "specialization": "engine", "location": "Chicago"}
+  {
+    "id": "SUP-001",
+    "name": "AutoParts Pro",
+    "specialization": "brakes",
+    "location": "New York",
+    "rating": 4.5,
+    "delivery_time": "3-5 days",
+    "minimum_order": 10,
+    "bulk_discount": {
+      "50": 0.05,
+      "100": 0.10,
+      "200": 0.15,
+      "500": 0.20
+    },
+    "payment_terms": "Net 30",
+    "shipping_cost": 15.00,
+    "free_shipping_threshold": 500.00
+  },
+  {
+    "id": "SUP-002",
+    "name": "Filter King",
+    "specialization": "filters",
+    "location": "Los Angeles",
+    "rating": 4.3,
+    "delivery_time": "2-4 days",
+    "minimum_order": 5,
+    "bulk_discount": {
+      "25": 0.08,
+      "50": 0.12,
+      "100": 0.18,
+      "250": 0.25
+    },
+    "payment_terms": "Net 15",
+    "shipping_cost": 12.00,
+    "free_shipping_threshold": 300.00
+  },
+  {
+    "id": "SUP-003",
+    "name": "Engine Masters",
+    "specialization": "engine",
+    "location": "Chicago",
+    "rating": 4.7,
+    "delivery_time": "4-7 days",
+    "minimum_order": 1,
+    "bulk_discount": {
+      "10": 0.10,
+      "25": 0.15,
+      "50": 0.20,
+      "100": 0.30
+    },
+    "payment_terms": "Net 45",
+    "shipping_cost": 25.00,
+    "free_shipping_threshold": 750.00
+  },
+  {
+    "id": "SUP-004",
+    "name": "Suspension Solutions",
+    "specialization": "suspension",
+    "location": "Houston",
+    "rating": 4.4,
+    "delivery_time": "3-6 days",
+    "minimum_order": 5,
+    "bulk_discount": {
+      "20": 0.08,
+      "50": 0.12,
+      "100": 0.18,
+      "200": 0.25
+    },
+    "payment_terms": "Net 30",
+    "shipping_cost": 18.00,
+    "free_shipping_threshold": 400.00
+  },
+  {
+    "id": "SUP-005",
+    "name": "Electrical Experts",
+    "specialization": "electrical",
+    "location": "Phoenix",
+    "rating": 4.6,
+    "delivery_time": "2-5 days",
+    "minimum_order": 3,
+    "bulk_discount": {
+      "15": 0.10,
+      "30": 0.15,
+      "60": 0.20,
+      "120": 0.30
+    },
+    "payment_terms": "Net 20",
+    "shipping_cost": 20.00,
+    "free_shipping_threshold": 600.00
+  }
 ] 

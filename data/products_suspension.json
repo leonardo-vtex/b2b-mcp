@@ -1,0 +1,47 @@
+[
+  {
+    "sku": "SUS-001",
+    "name": "Front Shock Absorber",
+    "category": "suspension",
+    "brand": "Toyota",
+    "compatibility": ["Toyota Camry 2020", "Toyota Camry 2019"],
+    "supplier_id": "SUP-041",
+    "price": 85
+  },
+  {
+    "sku": "SUS-002",
+    "name": "Rear Shock Absorber",
+    "category": "suspension",
+    "brand": "Honda",
+    "compatibility": ["Honda Civic 2019", "Honda Accord 2020"],
+    "supplier_id": "SUP-042",
+    "price": 75
+  },
+  {
+    "sku": "SUS-003",
+    "name": "Coil Spring Set",
+    "category": "suspension",
+    "brand": "Monroe",
+    "compatibility": ["Ford F-150 2020", "Chevrolet Silverado 2020"],
+    "supplier_id": "SUP-043",
+    "price": 110
+  },
+  {
+    "sku": "SUS-004",
+    "name": "Control Arm - Lower",
+    "category": "suspension",
+    "brand": "Moog",
+    "compatibility": ["Nissan Altima 2019", "Nissan Sentra 2020"],
+    "supplier_id": "SUP-041",
+    "price": 95
+  },
+  {
+    "sku": "SUS-005",
+    "name": "Stabilizer Bar Link",
+    "category": "suspension",
+    "brand": "Raybestos",
+    "compatibility": ["BMW 3 Series 2020", "Mercedes C-Class 2020"],
+    "supplier_id": "SUP-042",
+    "price": 45
+  }
+] 

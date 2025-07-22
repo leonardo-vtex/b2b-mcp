@@ -1,20 +1,37 @@
 import { DataService } from './dataService';
 import { OpenAIService } from './openaiService';
+import { MCPService } from './mcpService';
 import { Product, Supplier, SupplierOffer, ProcurementRequest, ProcurementResponse, ParsedQuery } from '../types';
 
 export class ProcurementService {
   private dataService: DataService;
   private openaiService: OpenAIService;
+  private mcpService: MCPService;
 
   constructor() {
     this.dataService = new DataService();
     this.openaiService = new OpenAIService();
+    this.mcpService = new MCPService();
   }
 
   async processProcurementRequest(request: ProcurementRequest): Promise<ProcurementResponse> {
     const startTime = Date.now();
     
     try {
+      console.log('🚀 Procurement Service using MCP/A2A architecture');
+      
+      // Use MCP service for agent-to-agent coordination
+      const mcpResponse = await this.mcpService.processProcurementRequest(request);
+      
+      // If MCP agents found offers, return them
+      if (mcpResponse.offers.length > 0) {
+        console.log(`✅ MCP agents found ${mcpResponse.offers.length} offers`);
+        return mcpResponse;
+      }
+      
+      // Fallback to traditional approach if MCP agents didn't find anything
+      console.log('🔄 Falling back to traditional procurement approach');
+      
       // Parse the query using AI
       const parsedQuery = await this.openaiService.parseQuery(request.query);
       

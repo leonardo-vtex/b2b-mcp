@@ -2,6 +2,52 @@
 
 A **Model Context Protocol (MCP)** demonstration showcasing **Agent-to-Agent (A2A)** procurement in the automotive industry. This system uses AI to intelligently parse procurement queries and coordinate between a main procurement agent and 10 specialized supplier agents.
 
+## 🤖 **MCP/A2A Architecture Implemented**
+
+This demo now features a **real MCP (Model Context Protocol)** implementation with **Agent-to-Agent (A2A)** communication:
+
+### **🏗️ MCP Agent Architecture**
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    Main Procurement Agent                   │
+│                    (MCP Coordinator)                        │
+└─────────────────────┬───────────────────────────────────────┘
+                      │
+        ┌─────────────┼─────────────┐
+        │             │             │
+        ▼             ▼             ▼
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│AutoParts Pro│ │Filter King  │ │Engine Masters│
+│(Brakes)     │ │(Filters)    │ │(Engine)     │
+└─────────────┘ └─────────────┘ └─────────────┘
+        │             │             │
+        ▼             ▼             ▼
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│Electrical   │ │Suspension   │ │Cooling      │
+│Solutions    │ │Specialists  │ │Systems Pro  │
+└─────────────┘ └─────────────┘ └─────────────┘
+        │             │             │
+        ▼             ▼             ▼
+┌─────────────┐ ┌─────────────┐ ┌─────────────┐
+│Exhaust      │ │Transmission │ │Fuel Systems │
+│Experts      │ │Tech         │ │Plus         │
+└─────────────┘ └─────────────┘ └─────────────┘
+        │
+        ▼
+┌─────────────┐
+│Steering     │
+│Solutions    │
+└─────────────┘
+```
+
+### **🔄 A2A Communication Flow**
+1. **User Query** → Frontend → Backend MCP Service
+2. **Main Agent** parses query and identifies relevant supplier agents
+3. **A2A Coordination** between Main Agent and specialized Supplier Agents
+4. **Supplier Agents** process requests and generate offers
+5. **Main Agent** aggregates and ranks offers
+6. **Response** with AI recommendations and coordinated offers
+
 ## 🏗️ Architecture
 
 ```
@@ -24,13 +70,15 @@ A **Model Context Protocol (MCP)** demonstration showcasing **Agent-to-Agent (A2
 
 ## ✨ Features
 
-- **🤖 AI-Powered Query Parsing**: Natural language processing for procurement requests
-- **🏢 Multi-Agent Coordination**: 10 specialized supplier agents with unique catalogs
-- **📊 Intelligent Scoring**: AI-driven offer evaluation and ranking
+- **🤖 Real MCP Implementation**: True Model Context Protocol with Agent-to-Agent communication
+- **🏢 A2A Coordination**: 10 specialized supplier agents with real inter-agent communication
+- **🧠 AI-Powered Query Parsing**: OpenAI GPT-4 integration for intelligent query understanding
+- **📊 Intelligent Scoring**: AI-driven offer evaluation and ranking across agents
 - **🎨 Modern Dark UI**: Beautiful, responsive interface with glassmorphism effects
-- **⚡ Real-time Processing**: Fast response times with intelligent caching
-- **🔍 Advanced Search**: Fuzzy matching and category-based filtering
+- **⚡ Real-time A2A Processing**: Fast response times with coordinated agent communication
+- **🔍 Advanced Search**: Fuzzy matching and category-based filtering with agent specialization
 - **💰 Smart Pricing**: Bulk discounts, shipping calculations, and supplier ratings
+- **🔄 Fallback System**: Traditional procurement as backup when MCP agents don't find matches
 
 ## 🚀 Quick Start
 
@@ -70,27 +118,32 @@ A **Model Context Protocol (MCP)** demonstration showcasing **Agent-to-Agent (A2
 
 ## 🎯 Demo Examples
 
-Try these example queries to see the system in action:
+Try these example queries to see the **MCP/A2A system** in action:
 
 1. **"I need brake pads for Toyota Camry"**
-   - Parses: Category=brakes, Brand=Toyota
-   - Returns: Multiple supplier offers with pricing
+   - 🤖 **MCP Agent**: Main Agent → AutoParts Pro (Brakes Specialist)
+   - 📊 **A2A Result**: Brake Pads - Front Set at $42.75
+   - 🎯 **AI Recommendation**: "AutoParts Pro (brakes specialist) offers the best solution"
 
-2. **"Looking for 100 air filters, urgent delivery"**
-   - Parses: Category=filters, Quantity=100, Urgency=high
-   - Returns: Prioritized offers with fast delivery
+2. **"URGENT: Need 50 ignition coils for Toyota Camry"**
+   - 🤖 **MCP Agent**: Main Agent → Electrical Solutions (Electrical Specialist)
+   - 📊 **A2A Result**: Ignition Coil at $32.90
+   - 🎯 **AI Recommendation**: "Electrical Solutions offers the best solution"
 
-3. **"Need premium engine oil filters for BMW"**
-   - Parses: Category=filters, Brand=BMW, Price=premium
-   - Returns: High-quality supplier recommendations
+3. **"Looking for 100 air filters, urgent delivery"**
+   - 🤖 **MCP Agent**: Main Agent → Filter King (Filters Specialist)
+   - 📊 **A2A Result**: Air Filter - Premium at $17.46
+   - 🎯 **AI Recommendation**: "Filter King (filters specialist) offers the best solution"
 
 4. **"50 suspension parts for Honda Civic"**
-   - Parses: Category=suspension, Brand=Honda, Quantity=50
-   - Returns: Bulk pricing and availability
+   - 🤖 **MCP Agent**: Main Agent → Suspension Specialists (Suspension Specialist)
+   - 📊 **A2A Result**: Front Shock Absorber at $80.75
+   - 🎯 **AI Recommendation**: "Suspension Specialists offers the best solution"
 
 5. **"Bulk order: 500 transmission components"**
-   - Parses: Category=transmission, Quantity=500
-   - Returns: Maximum bulk discounts and volume pricing
+   - 🤖 **MCP Agent**: Main Agent → Transmission Tech (Transmission Specialist)
+   - 📊 **A2A Result**: Specialized transmission components with bulk pricing
+   - 🎯 **AI Recommendation**: "Multiple MCP agents were coordinated to find the best offers"
 
 ## 🔧 API Endpoints
 
@@ -98,6 +151,26 @@ Try these example queries to see the system in action:
 ```http
 GET /health
 ```
+
+## 🚀 **Current System Status**
+
+### ✅ **MCP/A2A Implementation Status**
+- **🤖 Main Procurement Agent**: ✅ Implemented and running
+- **🏢 10 Supplier Agents**: ✅ All agents operational
+- **🔄 A2A Communication**: ✅ Real-time coordination working
+- **🧠 OpenAI Integration**: ✅ API key configured and working
+- **📊 Agent Specialization**: ✅ Each agent handles specific categories
+- **🎯 Intelligent Routing**: ✅ Queries routed to relevant agents
+- **💰 Offer Generation**: ✅ Agents generate realistic offers
+- **📈 Scoring System**: ✅ Offers ranked by multiple factors
+
+### 🔧 **Technical Stack**
+- **Frontend**: Next.js 15 with TypeScript
+- **Backend**: Node.js/Express with TypeScript
+- **MCP Framework**: Custom implementation with A2A communication
+- **AI**: OpenAI GPT-4 for query parsing
+- **Data**: JSON-based product and supplier catalogs
+- **Architecture**: Monorepo with microservices
 
 ### Get Products
 ```http

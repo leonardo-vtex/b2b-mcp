@@ -1,0 +1,272 @@
+[
+  {
+    "sku": "BRK-001",
+    "name": "Ceramic Brake Pads - Front Set",
+    "category": "brakes",
+    "brand": "Toyota",
+    "compatibility": ["Toyota Camry 2020", "Toyota Camry 2019", "Toyota Camry 2021"],
+    "supplier_id": "SUP-001",
+    "price": 55
+  },
+  {
+    "sku": "BRK-002",
+    "name": "Ceramic Brake Pads - Rear Set",
+    "category": "brakes",
+    "brand": "Toyota",
+    "compatibility": ["Toyota Camry 2020", "Toyota Camry 2018"],
+    "supplier_id": "SUP-001",
+    "price": 52
+  },
+  {
+    "sku": "BRK-003",
+    "name": "Performance Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Honda",
+    "compatibility": ["Honda Accord 2020", "Honda Accord 2019"],
+    "supplier_id": "SUP-002",
+    "price": 60
+  },
+  {
+    "sku": "BRK-004",
+    "name": "Performance Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Honda",
+    "compatibility": ["Honda Accord 2020", "Honda Accord 2018"],
+    "supplier_id": "SUP-002",
+    "price": 58
+  },
+  {
+    "sku": "BRK-005",
+    "name": "Premium Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Nissan",
+    "compatibility": ["Nissan Altima 2020", "Nissan Altima 2019"],
+    "supplier_id": "SUP-003",
+    "price": 62
+  },
+  {
+    "sku": "BRK-006",
+    "name": "Premium Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Nissan",
+    "compatibility": ["Nissan Altima 2020", "Nissan Altima 2018"],
+    "supplier_id": "SUP-003",
+    "price": 59
+  },
+  {
+    "sku": "BRK-007",
+    "name": "Standard Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Ford",
+    "compatibility": ["Ford Fusion 2020", "Ford Fusion 2019"],
+    "supplier_id": "SUP-004",
+    "price": 50
+  },
+  {
+    "sku": "BRK-008",
+    "name": "Standard Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Ford",
+    "compatibility": ["Ford Fusion 2020", "Ford Fusion 2018"],
+    "supplier_id": "SUP-004",
+    "price": 48
+  },
+  {
+    "sku": "BRK-009",
+    "name": "OEM Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Chevrolet",
+    "compatibility": ["Chevrolet Malibu 2020", "Chevrolet Malibu 2019"],
+    "supplier_id": "SUP-005",
+    "price": 54
+  },
+  {
+    "sku": "BRK-010",
+    "name": "OEM Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Chevrolet",
+    "compatibility": ["Chevrolet Malibu 2020", "Chevrolet Malibu 2018"],
+    "supplier_id": "SUP-005",
+    "price": 51
+  },
+  {
+    "sku": "BRK-011",
+    "name": "Ceramic Brake Pads - Front Set",
+    "category": "brakes",
+    "brand": "BMW",
+    "compatibility": ["BMW 3 Series 2020", "BMW 3 Series 2019"],
+    "supplier_id": "SUP-006",
+    "price": 70
+  },
+  {
+    "sku": "BRK-012",
+    "name": "Ceramic Brake Pads - Rear Set",
+    "category": "brakes",
+    "brand": "BMW",
+    "compatibility": ["BMW 3 Series 2020", "BMW 3 Series 2018"],
+    "supplier_id": "SUP-006",
+    "price": 68
+  },
+  {
+    "sku": "BRK-013",
+    "name": "Performance Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Mercedes",
+    "compatibility": ["Mercedes C-Class 2020", "Mercedes C-Class 2019"],
+    "supplier_id": "SUP-007",
+    "price": 75
+  },
+  {
+    "sku": "BRK-014",
+    "name": "Performance Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Mercedes",
+    "compatibility": ["Mercedes C-Class 2020", "Mercedes C-Class 2018"],
+    "supplier_id": "SUP-007",
+    "price": 73
+  },
+  {
+    "sku": "BRK-015",
+    "name": "Premium Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Audi",
+    "compatibility": ["Audi A4 2020", "Audi A4 2019"],
+    "supplier_id": "SUP-008",
+    "price": 72
+  },
+  {
+    "sku": "BRK-016",
+    "name": "Premium Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Audi",
+    "compatibility": ["Audi A4 2020", "Audi A4 2018"],
+    "supplier_id": "SUP-008",
+    "price": 69
+  },
+  {
+    "sku": "BRK-017",
+    "name": "Standard Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Volkswagen",
+    "compatibility": ["Volkswagen Passat 2020", "Volkswagen Passat 2019"],
+    "supplier_id": "SUP-009",
+    "price": 53
+  },
+  {
+    "sku": "BRK-018",
+    "name": "Standard Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Volkswagen",
+    "compatibility": ["Volkswagen Passat 2020", "Volkswagen Passat 2018"],
+    "supplier_id": "SUP-009",
+    "price": 50
+  },
+  {
+    "sku": "BRK-019",
+    "name": "OEM Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Hyundai",
+    "compatibility": ["Hyundai Sonata 2020", "Hyundai Sonata 2019"],
+    "supplier_id": "SUP-010",
+    "price": 56
+  },
+  {
+    "sku": "BRK-020",
+    "name": "OEM Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Hyundai",
+    "compatibility": ["Hyundai Sonata 2020", "Hyundai Sonata 2018"],
+    "supplier_id": "SUP-010",
+    "price": 53
+  },
+  {
+    "sku": "BRK-021",
+    "name": "Ceramic Brake Pads - Front Set",
+    "category": "brakes",
+    "brand": "Kia",
+    "compatibility": ["Kia Optima 2020", "Kia Optima 2019"],
+    "supplier_id": "SUP-011",
+    "price": 57
+  },
+  {
+    "sku": "BRK-022",
+    "name": "Ceramic Brake Pads - Rear Set",
+    "category": "brakes",
+    "brand": "Kia",
+    "compatibility": ["Kia Optima 2020", "Kia Optima 2018"],
+    "supplier_id": "SUP-011",
+    "price": 54
+  },
+  {
+    "sku": "BRK-023",
+    "name": "Performance Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Mazda",
+    "compatibility": ["Mazda 6 2020", "Mazda 6 2019"],
+    "supplier_id": "SUP-012",
+    "price": 61
+  },
+  {
+    "sku": "BRK-024",
+    "name": "Performance Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Mazda",
+    "compatibility": ["Mazda 6 2020", "Mazda 6 2018"],
+    "supplier_id": "SUP-012",
+    "price": 59
+  },
+  {
+    "sku": "BRK-025",
+    "name": "Premium Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Subaru",
+    "compatibility": ["Subaru Legacy 2020", "Subaru Legacy 2019"],
+    "supplier_id": "SUP-013",
+    "price": 63
+  },
+  {
+    "sku": "BRK-026",
+    "name": "Premium Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Subaru",
+    "compatibility": ["Subaru Legacy 2020", "Subaru Legacy 2018"],
+    "supplier_id": "SUP-013",
+    "price": 60
+  },
+  {
+    "sku": "BRK-027",
+    "name": "Standard Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Dodge",
+    "compatibility": ["Dodge Charger 2020", "Dodge Charger 2019"],
+    "supplier_id": "SUP-014",
+    "price": 55
+  },
+  {
+    "sku": "BRK-028",
+    "name": "Standard Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Dodge",
+    "compatibility": ["Dodge Charger 2020", "Dodge Charger 2018"],
+    "supplier_id": "SUP-014",
+    "price": 52
+  },
+  {
+    "sku": "BRK-029",
+    "name": "OEM Brake Pads - Front",
+    "category": "brakes",
+    "brand": "Chrysler",
+    "compatibility": ["Chrysler 300 2020", "Chrysler 300 2019"],
+    "supplier_id": "SUP-015",
+    "price": 58
+  },
+  {
+    "sku": "BRK-030",
+    "name": "OEM Brake Pads - Rear",
+    "category": "brakes",
+    "brand": "Chrysler",
+    "compatibility": ["Chrysler 300 2020", "Chrysler 300 2018"],
+    "supplier_id": "SUP-015",
+    "price": 55
+  }
+] 

@@ -1,96 +1,74 @@
 "use client";
-
 import React, { useState } from 'react';
+
+type Offer = {
+  supplier: {
+    name: string;
+    rating: number;
+    bulk_discount: Record<string, number>;
+    shipping_cost: number;
+    free_shipping_threshold: number;
+    delivery_time: string;
+  };
+  product: {
+    name: string;
+    sku: string;
+    category: string;
+    brand: string;
+  };
+  price: number;
+  quantity_available: number;
+  delivery_time: string;
+  total_cost: number;
+  shipping_cost: number;
+  bulk_discount_applied: number;
+  final_price: number;
+  score: number;
+};
 
 const QUICK_EXAMPLES = [
   'I need to buy 50 brake pads for Toyota Camry 2020 models',
   'Looking for 100 air filters with delivery in less than a week',
-  'Need 25 spark plugs for Honda Civic, 2018, NGK brand',
+  'Need 25 spark plugs for Honda Civic, 2019, NGK brand',
   'Searching for 75 oil filters, best price for bulk order',
-  'Want 10 alternators for Ford F-150, new or refurbished',
-  '200 premium brake pads for BMW vehicles, OEM only',
+  'Want 10 alternators for Ford F-150',
+  '200 ceramic brake pads for BMW vehicles',
   '500 air filters from Bosch or Mann brands, any model',
   'URGENT: Need 50 ignition coils for Toyota Camry 2020 models',
-  'Complete engine maintenance kit: 10 sets for Nissan Versa',
-  '1000 suspension components with 2-year warranty, mixed brands',
+  '10 sets of Engine Oil for Nissan Versa',
+  '1000 suspension components for mixed brands',
 ];
-
-const MOCK_AI_RECOMMENDATIONS = `1. Exhaust Masters offers the most cost-effective solution at $897.60 for 100 air filters with a delivery time of 4 days. This meets the delivery requirement and offers the best price.\n\n2. Steering Solutions is a viable alternative if, for any reason, Exhaust Masters cannot fulfill the order. However, their offer is slightly more expensive at $928.80 for the same quantity and delivery time.\n\n3. It may be beneficial to negotiate with both suppliers for a better price or faster delivery time, given the volume of the order.`;
-
-const MOCK_OFFERS = [
-  {
-    supplier: 'Exhaust Masters',
-    best: true,
-    product: 'Engine Air Filter',
-    sku: 'FLT-001',
-    unitPrice: 8.98,
-    available: 421,
-    delivery: '4 days',
-    shipping: 0,
-    bulkDiscount: '12.0%',
-    rating: 4.4,
-    total: 897.60,
-  },
-  {
-    supplier: 'Exhaust Masters',
-    best: true,
-    product: 'Cabin Air Filter',
-    sku: 'FLT-003',
-    unitPrice: 8.98,
-    available: 325,
-    delivery: '4 days',
-    shipping: 0,
-    bulkDiscount: '12.0%',
-    rating: 4.4,
-    total: 897.60,
-  },
-  {
-    supplier: 'Steering Solutions',
-    best: false,
-    product: 'Engine Air Filter',
-    sku: 'FLT-001',
-    unitPrice: 9.29,
-    available: 300,
-    delivery: '4 days',
-    shipping: 0,
-    bulkDiscount: '10.0%',
-    rating: 4.2,
-    total: 928.80,
-  },
-];
-
-type Offer = {
-  supplier: string;
-  best: boolean;
-  product: string;
-  sku: string;
-  unitPrice: number;
-  available: number;
-  delivery: string;
-  shipping: number;
-  bulkDiscount: string;
-  rating: number;
-  total: number;
-};
 
 export default function Home() {
   const [search, setSearch] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const [category, setCategory] = useState('All Categories');
-  const [maxPrice, setMaxPrice] = useState('');
-  const [priority, setPriority] = useState('Standard');
   const [aiRecommendations, setAIRecommendations] = useState<string | null>(null);
   const [offers, setOffers] = useState<Offer[]>([]);
   const [searching, setSearching] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSearch = (e?: React.FormEvent) => {
+  const handleSearch = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     setSearching(true);
-    setTimeout(() => {
-      setAIRecommendations(MOCK_AI_RECOMMENDATIONS);
-      setOffers(MOCK_OFFERS);
+    setError(null);
+    setAIRecommendations(null);
+    setOffers([]);
+    try {
+      const res = await fetch('/api/procure', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          query: search,
+        }),
+      });
+      if (!res.ok) throw new Error('Failed to fetch offers');
+      const data = await res.json();
+      setOffers(data.offers || []);
+      setAIRecommendations((data.recommendations && data.recommendations.join('\n')) || null);
+    } catch (err: any) {
+      setError(err.message || 'Unknown error');
+    } finally {
       setSearching(false);
-    }, 1200);
+    }
   };
 
   return (
@@ -125,68 +103,18 @@ export default function Home() {
         {/* Search Form */}
         <section className="mb-10 bg-[#1c2940]/80 rounded-xl shadow-lg p-8 border border-[#2a3c5c]">
           <h2 className="text-2xl font-bold mb-6 text-center">Search for Parts</h2>
-          <form className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto" onSubmit={handleSearch}>
-            <div className="md:col-span-2">
+          <form className="max-w-2xl mx-auto" onSubmit={handleSearch}>
+            <div className="mb-6">
               <label className="block text-sm font-semibold mb-1 text-[#7de2ff]">WHAT DO YOU NEED?</label>
               <textarea
                 className="w-full rounded-lg p-3 bg-[#22304a] text-white border border-[#2a3c5c] focus:outline-none focus:ring-2 focus:ring-[#7de2ff] resize-none"
-                rows={2}
-                placeholder="Describe your parts requirement..."
+                rows={3}
+                placeholder="Describe your parts requirement... (e.g., I need 50 brake pads for Toyota Camry 2020 models)"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
             </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-[#7de2ff]">QUANTITY</label>
-              <input
-                type="number"
-                min="1"
-                className="w-full rounded-lg p-3 bg-[#22304a] text-white border border-[#2a3c5c] focus:outline-none focus:ring-2 focus:ring-[#7de2ff]"
-                placeholder="e.g. 50"
-                value={quantity}
-                onChange={e => setQuantity(e.target.value)}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-[#7de2ff]">CATEGORY</label>
-              <select
-                className="w-full rounded-lg p-3 bg-[#22304a] text-white border border-[#2a3c5c] focus:outline-none focus:ring-2 focus:ring-[#7de2ff]"
-                value={category}
-                onChange={e => setCategory(e.target.value)}
-              >
-                <option>All Categories</option>
-                <option>Brakes</option>
-                <option>Filters</option>
-                <option>Ignition</option>
-                <option>Suspension</option>
-                <option>Engine</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-[#7de2ff]">MAX PRICE PER UNIT</label>
-              <input
-                type="number"
-                min="0"
-                className="w-full rounded-lg p-3 bg-[#22304a] text-white border border-[#2a3c5c] focus:outline-none focus:ring-2 focus:ring-[#7de2ff]"
-                placeholder="e.g. 100.00"
-                value={maxPrice}
-                onChange={e => setMaxPrice(e.target.value)}
-              />
-            </div>
-            <div>
-              <label className="block text-sm font-semibold mb-1 text-[#7de2ff]">DELIVERY PRIORITY</label>
-              <select
-                className="w-full rounded-lg p-3 bg-[#22304a] text-white border border-[#2a3c5c] focus:outline-none focus:ring-2 focus:ring-[#7de2ff]"
-                value={priority}
-                onChange={e => setPriority(e.target.value)}
-              >
-                <option>Standard</option>
-                <option>Express</option>
-                <option>Urgent</option>
-              </select>
-            </div>
-            <div className="md:col-span-2 flex justify-center mt-2">
+            <div className="flex justify-center">
               <button
                 type="submit"
                 className="bg-gradient-to-r from-[#7de2ff] to-[#ff6bcb] text-[#1a2233] font-bold rounded-full px-8 py-3 text-lg shadow-lg hover:scale-105 transition flex items-center gap-2 disabled:opacity-60"
@@ -195,11 +123,12 @@ export default function Home() {
                 {searching ? (
                   <span className="animate-spin inline-block w-5 h-5 border-2 border-[#1a2233] border-t-[#7de2ff] rounded-full"></span>
                 ) : (
-                  '🔍 SEARCH ACROSS 10 SUPPLIERS'
+                  '🔍 SEARCH ACROSS SUPPLIERS'
                 )}
               </button>
             </div>
           </form>
+          {error && <div className="mt-4 text-red-400 font-bold">{error}</div>}
         </section>
 
         {/* AI Recommendations */}
@@ -229,20 +158,20 @@ export default function Home() {
             ) : offers.length > 0 ? (
               <div className="space-y-6">
                 {offers.map((offer, i) => (
-                  <div key={i} className={`border rounded-xl p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4 ${offer.best ? 'border-[#7de2ff] bg-[#1c2940]' : 'border-[#2a3c5c] bg-[#22304a]'}`}>
+                  <div key={i} className={`border rounded-xl p-5 flex flex-col md:flex-row md:items-center md:justify-between gap-4 ${offer.score === Math.max(...offers.map(o => o.score)) ? 'border-[#7de2ff] bg-[#1c2940]' : 'border-[#2a3c5c] bg-[#22304a]'}`}>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="font-bold text-lg">{offer.supplier}</span>
-                        {offer.best && <span className="ml-2 px-2 py-0.5 bg-[#7de2ff] text-[#1a2233] text-xs font-bold rounded-full">BEST OFFER</span>}
+                        <span className="font-bold text-lg">{offer.supplier.name}</span>
+                        {offer.score === Math.max(...offers.map(o => o.score)) && <span className="ml-2 px-2 py-0.5 bg-[#7de2ff] text-[#1a2233] text-xs font-bold rounded-full">BEST OFFER</span>}
                       </div>
-                      <div className="text-sm text-blue-100">Product: <span className="font-semibold text-white">{offer.product}</span> | SKU: {offer.sku}</div>
-                      <div className="text-sm text-blue-100">Available: <span className="text-white font-semibold">{offer.available} units</span> | Delivery: {offer.delivery}</div>
-                      <div className="text-sm text-blue-100">Bulk Discount: {offer.bulkDiscount} | Rating: <span className="text-yellow-300">★ {offer.rating}/5.0</span></div>
+                      <div className="text-sm text-blue-100">Product: <span className="font-semibold text-white">{offer.product.name}</span> | SKU: {offer.product.sku}</div>
+                      <div className="text-sm text-blue-100">Available: <span className="text-white font-semibold">{offer.quantity_available} units</span> | Delivery: {offer.delivery_time}</div>
+                      <div className="text-sm text-blue-100">Bulk Discount: {Math.round(offer.bulk_discount_applied * 100)}% | Rating: <span className="text-yellow-300">★ {offer.supplier.rating}/5.0</span></div>
                     </div>
                     <div className="flex flex-col items-end min-w-[120px]">
-                      <div className="text-2xl font-extrabold text-[#7de2ff]">${offer.total.toLocaleString(undefined, {minimumFractionDigits:2})}</div>
-                      <div className="text-xs text-blue-200">Unit: ${offer.unitPrice.toFixed(2)}</div>
-                      <div className="text-xs text-blue-200">Shipping: {offer.shipping === 0 ? '$0.00' : `$${offer.shipping}`}</div>
+                      <div className="text-2xl font-extrabold text-[#7de2ff]">${offer.final_price.toLocaleString(undefined, {minimumFractionDigits:2})}</div>
+                      <div className="text-xs text-blue-200">Unit: ${offer.price.toFixed(2)}</div>
+                      <div className="text-xs text-blue-200">Shipping: {offer.shipping_cost === 0 ? '$0.00' : `$${offer.shipping_cost}`}</div>
                     </div>
                   </div>
                 ))}

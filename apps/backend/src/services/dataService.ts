@@ -17,13 +17,28 @@ export class DataService {
         'data/products.json',
         'data/products_extended.json', 
         'data/products_additional.json',
-        'data/products_final.json'
+        'data/products_final.json',
+        'data/products_brakes.json',
+        'data/products_filters.json',
+        'data/products_engine.json',
+        'data/products_electrical.json',
+        'data/products_suspension.json'
       ];
 
       this.products = [];
       for (const file of productFiles) {
         try {
-          const filePath = path.join(process.cwd(), file);
+          // Try to find the file relative to the project root (two levels up from apps/backend)
+          let filePath = path.join(process.cwd(), file);
+          if (!fs.existsSync(filePath)) {
+            // Try from project root
+            filePath = path.join(process.cwd(), '..', '..', file);
+          }
+          if (!fs.existsSync(filePath)) {
+            // Try from current directory
+            filePath = path.join(__dirname, '..', '..', '..', file);
+          }
+          
           if (fs.existsSync(filePath)) {
             const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
             if (Array.isArray(data)) {
@@ -31,6 +46,9 @@ export class DataService {
             } else if (data.products && Array.isArray(data.products)) {
               this.products.push(...data.products);
             }
+            console.log(`Loaded ${file}: ${Array.isArray(data) ? data.length : data.products?.length || 0} products`);
+          } else {
+            console.warn(`File not found: ${file}`);
           }
         } catch (error) {
           console.warn(`Warning: Could not load ${file}:`, error);
@@ -38,13 +56,23 @@ export class DataService {
       }
 
       // Load suppliers
-      const suppliersPath = path.join(process.cwd(), 'data/suppliers.json');
+      let suppliersPath = path.join(process.cwd(), 'data/suppliers.json');
+      if (!fs.existsSync(suppliersPath)) {
+        suppliersPath = path.join(process.cwd(), '..', '..', 'data/suppliers.json');
+      }
+      if (!fs.existsSync(suppliersPath)) {
+        suppliersPath = path.join(__dirname, '..', '..', '..', 'data/suppliers.json');
+      }
+      
       if (fs.existsSync(suppliersPath)) {
         const suppliersData = JSON.parse(fs.readFileSync(suppliersPath, 'utf8'));
         this.suppliers = Array.isArray(suppliersData) ? suppliersData : suppliersData.suppliers || [];
+        console.log(`Loaded suppliers: ${this.suppliers.length} suppliers`);
+      } else {
+        console.warn('Suppliers file not found');
       }
 
-      console.log(`Loaded ${this.products.length} products and ${this.suppliers.length} suppliers`);
+      console.log(`Total loaded: ${this.products.length} products and ${this.suppliers.length} suppliers`);
     } catch (error) {
       console.error('Error loading data:', error);
       throw error;
