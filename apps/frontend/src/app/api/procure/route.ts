@@ -186,7 +186,21 @@ class ProcurementService {
     const startTime = Date.now();
     try {
       const parsedQuery = await this.openaiService.parseQuery(request.query);
-      const matchingProducts = this.findMatchingProducts(parsedQuery);
+      let matchingProducts = this.findMatchingProducts(parsedQuery);
+      // --- MEJORA: Prioriza coincidencia exacta de nombre y compatibilidad ---
+      if (parsedQuery.product_name && parsedQuery.brand) {
+        const exact = matchingProducts.filter(product =>
+          product.name.toLowerCase().includes(parsedQuery.product_name!.toLowerCase()) &&
+          (product.compatibility?.some(c => c.toLowerCase().includes(parsedQuery.brand!.toLowerCase())) ||
+           product.brand.toLowerCase().includes(parsedQuery.brand!.toLowerCase()))
+        );
+        if (exact.length > 0) matchingProducts = exact;
+      } else if (parsedQuery.product_name) {
+        const exact = matchingProducts.filter(product =>
+          product.name.toLowerCase().includes(parsedQuery.product_name!.toLowerCase())
+        );
+        if (exact.length > 0) matchingProducts = exact;
+      }
       if (matchingProducts.length === 0) {
         return {
           query: request.query,
