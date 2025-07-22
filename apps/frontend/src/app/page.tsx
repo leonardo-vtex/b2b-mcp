@@ -18,25 +18,39 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [suppliers, setSuppliers] = useState<Supplier[]>([]);
   const [result, setResult] = useState('');
+  const [recommendations, setRecommendations] = useState<string | null>(null);
+  const [loadingAI, setLoadingAI] = useState(false);
 
   useEffect(() => {
-    fetch('/api/products').then(res => res.json()).then(setProducts);
-    fetch('/api/suppliers').then(res => res.json()).then(setSuppliers);
+    fetch('/api/products').then(res => res.json()).then(data => setProducts(data.products || []));
+    fetch('/api/suppliers').then(res => res.json()).then(data => setSuppliers(data.suppliers || []));
   }, []);
 
   async function handleProcure(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    setRecommendations(null);
     const form = e.target as HTMLFormElement;
     const sku = (form.elements.namedItem('sku') as HTMLInputElement).value;
     const supplierId = (form.elements.namedItem('supplierId') as HTMLInputElement).value;
     const quantity = (form.elements.namedItem('quantity') as HTMLInputElement).value;
+    const query = `Procure ${quantity} units of ${sku} from supplier ${supplierId}`;
     const res = await fetch('/api/procure', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ sku, supplierId, quantity })
+      body: JSON.stringify({ sku, supplierId, quantity, query })
     });
     const data = await res.json();
     setResult(data.message || data.error);
+    // Fetch AI recommendations
+    setLoadingAI(true);
+    const aiRes = await fetch('/api/recommendations', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query })
+    });
+    const aiData = await aiRes.json();
+    setRecommendations(aiData.recommendations || null);
+    setLoadingAI(false);
   }
 
   return (
@@ -77,6 +91,13 @@ export default function Home() {
           <button type="submit" className="bg-blue-600 text-white rounded p-2 mt-2">Procure</button>
         </form>
         {result && <div className="mt-4 font-bold">{result}</div>}
+        {loadingAI && <div className="mt-4 text-blue-600">Loading AI recommendations...</div>}
+        {recommendations && (
+          <div className="mt-6 p-4 bg-blue-50 border-l-4 border-blue-400">
+            <h3 className="font-semibold mb-2 text-blue-700">AI Recommendations</h3>
+            <pre className="whitespace-pre-wrap text-sm">{recommendations}</pre>
+          </div>
+        )}
       </section>
     </main>
   );
