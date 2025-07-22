@@ -13,7 +13,8 @@ export async function POST(req: NextRequest) {
       'Prioritize suppliers with higher ratings and faster delivery.'
     ];
     return NextResponse.json({ recommendations });
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Internal error' }, { status: 500 });
+  } catch (error) {
+    const message = (error as Error).message || 'Internal error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 } 

@@ -355,7 +355,8 @@ export async function POST(req: NextRequest) {
     const procurementService = new ProcurementService();
     const response = await procurementService.processProcurementRequest(body);
     return NextResponse.json(response);
-  } catch (error: any) {
-    return NextResponse.json({ error: error.message || 'Internal error' }, { status: 500 });
+  } catch (error) {
+    const message = (error as Error).message || 'Internal error';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 } 
