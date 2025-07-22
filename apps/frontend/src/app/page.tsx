@@ -59,6 +59,20 @@ const MOCK_OFFERS = [
   },
 ];
 
+type Offer = {
+  supplier: string;
+  best: boolean;
+  product: string;
+  sku: string;
+  unitPrice: number;
+  available: number;
+  delivery: string;
+  shipping: number;
+  bulkDiscount: string;
+  rating: number;
+  total: number;
+};
+
 export default function Home() {
   const [search, setSearch] = useState('');
   const [quantity, setQuantity] = useState('');
@@ -66,7 +80,7 @@ export default function Home() {
   const [maxPrice, setMaxPrice] = useState('');
   const [priority, setPriority] = useState('Standard');
   const [aiRecommendations, setAIRecommendations] = useState<string | null>(null);
-  const [offers, setOffers] = useState<any[]>([]);
+  const [offers, setOffers] = useState<Offer[]>([]);
   const [searching, setSearching] = useState(false);
 
   const handleSearch = (e?: React.FormEvent) => {
