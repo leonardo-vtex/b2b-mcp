@@ -1,7 +1,6 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
-// MCP/A2A Demo API Route - Production Ready
-export async function POST(req: NextRequest) {
+export async function POST() {
   return NextResponse.json({
     query: "demo query",
     parsed_query: {
