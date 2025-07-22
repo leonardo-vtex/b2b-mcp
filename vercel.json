@@ -8,28 +8,8 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "/src/server.ts"
-    },
-    {
-      "src": "/health",
-      "dest": "/src/server.ts"
-    },
-    {
-      "src": "/products",
-      "dest": "/src/server.ts"
-    },
-    {
-      "src": "/suppliers",
-      "dest": "/src/server.ts"
-    },
-    {
-      "src": "/procure",
-      "dest": "/src/server.ts"
-    },
-    {
       "src": "/(.*)",
-      "dest": "/public/index.html"
+      "dest": "/src/server.ts"
     }
   ]
 } 
