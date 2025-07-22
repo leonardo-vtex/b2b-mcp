@@ -12,13 +12,11 @@
       "dest": "/api/$1"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
       "dest": "/frontend/index.html"
     }
-  ],
-  "functions": {
-    "api/**/*.py": {
-      "maxDuration": 30
-    }
-  }
+  ]
 } 

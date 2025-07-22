@@ -1,7 +1,7 @@
 import json
 
 def handler(request):
-    """Simple health check endpoint"""
+    """Simple test endpoint"""
     from http.server import BaseHTTPRequestHandler
     
     class RequestHandler(BaseHTTPRequestHandler):
@@ -14,10 +14,9 @@ def handler(request):
             self.end_headers()
             
             response = {
-                "status": "healthy",
-                "message": "B2B Automotive Parts Procurement MCP Demo is running",
-                "version": "1.0.0",
-                "environment": "vercel"
+                "message": "Vercel deployment is working!",
+                "status": "success",
+                "timestamp": "2024-07-21"
             }
             
             self.wfile.write(json.dumps(response).encode())
