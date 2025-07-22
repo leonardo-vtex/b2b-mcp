@@ -218,3 +218,5 @@ MIT License - see [LICENSE](LICENSE) file for details.
 ---
 
 **Built with ❤️ for the MCP (Model Context Protocol) community** 
+
+<!-- Trigger redeploy: dummy change for Vercel --> 
