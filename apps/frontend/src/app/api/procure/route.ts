@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export async function POST(req: any) {
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const query = body.query?.toLowerCase() || '';
@@ -149,7 +149,7 @@ export async function POST(req: any) {
       ],
       processing_time: 150
     });
-  } catch (error) {
+  } catch {
     // Fallback response if parsing fails
     return NextResponse.json({
       query: "demo query",
