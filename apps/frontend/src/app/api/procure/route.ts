@@ -9,7 +9,7 @@ interface Product {
   category: string;
   brand: string;
   compatibility: string[];
-  specifications: Record<string, any>;
+  specifications: Record<string, unknown>;
   dimensions: {
     length: string;
     width: string;
