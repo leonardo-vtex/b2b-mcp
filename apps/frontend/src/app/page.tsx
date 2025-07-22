@@ -64,8 +64,9 @@ export default function Home() {
       const data = await res.json();
       setOffers(data.offers || []);
       setAIRecommendations((data.recommendations && data.recommendations.join('\n')) || null);
-    } catch (err: any) {
-      setError(err.message || 'Unknown error');
+    } catch (err: unknown) {
+      const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+      setError(errorMessage);
     } finally {
       setSearching(false);
     }
