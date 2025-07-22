@@ -6,19 +6,69 @@
   <title>B2B MCP Demo</title>
   <style>
     body { font-family: sans-serif; margin: 2rem; }
-    #result { margin-top: 2rem; font-weight: bold; }
+    h1 { margin-bottom: 1rem; }
+    section { margin-bottom: 2rem; }
+    table { border-collapse: collapse; width: 100%; margin-bottom: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background: #eee; }
+    button { padding: 6px 12px; }
+    #result { margin-top: 1rem; font-weight: bold; }
   </style>
 </head>
 <body>
   <h1>🚗 B2B MCP Demo</h1>
-  <button id="apiBtn">Test API</button>
-  <div id="result"></div>
+  <section>
+    <h2>Products</h2>
+    <table id="productsTable">
+      <thead><tr><th>SKU</th><th>Name</th><th>Category</th><th>Brand</th><th>Price</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+  <section>
+    <h2>Suppliers</h2>
+    <table id="suppliersTable">
+      <thead><tr><th>ID</th><th>Name</th><th>Specialization</th><th>Location</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+  <section>
+    <h2>Simulate Procurement</h2>
+    <form id="procureForm">
+      <label>SKU: <input id="skuInput" required></label>
+      <label>Supplier ID: <input id="supplierInput" required></label>
+      <label>Quantity: <input id="qtyInput" type="number" min="1" required></label>
+      <button type="submit">Procure</button>
+    </form>
+    <div id="result"></div>
+  </section>
   <script>
-    document.getElementById('apiBtn').onclick = async function() {
-      const res = await fetch('/api/hello');
+    async function loadProducts() {
+      const res = await fetch('/api/products');
+      const products = await res.json();
+      const tbody = document.querySelector('#productsTable tbody');
+      tbody.innerHTML = products.map(p => `<tr><td>${p.sku}</td><td>${p.name}</td><td>${p.category}</td><td>${p.brand}</td><td>$${p.price}</td></tr>`).join('');
+    }
+    async function loadSuppliers() {
+      const res = await fetch('/api/suppliers');
+      const suppliers = await res.json();
+      const tbody = document.querySelector('#suppliersTable tbody');
+      tbody.innerHTML = suppliers.map(s => `<tr><td>${s.id}</td><td>${s.name}</td><td>${s.specialization}</td><td>${s.location}</td></tr>`).join('');
+    }
+    document.getElementById('procureForm').onsubmit = async function(e) {
+      e.preventDefault();
+      const sku = document.getElementById('skuInput').value;
+      const supplierId = document.getElementById('supplierInput').value;
+      const quantity = document.getElementById('qtyInput').value;
+      const res = await fetch('/api/procure', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sku, supplierId, quantity })
+      });
       const data = await res.json();
-      document.getElementById('result').textContent = data.message;
+      document.getElementById('result').textContent = data.message || data.error;
     };
+    loadProducts();
+    loadSuppliers();
   </script>
 </body>
 </html> 
