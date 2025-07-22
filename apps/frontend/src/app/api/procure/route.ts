@@ -146,27 +146,44 @@ class DataService {
 // --- OpenAIService (only fallbackParse for Vercel demo) ---
 class OpenAIService {
   async parseQuery(query: string): Promise<ParsedQuery> {
-    return this.fallbackParse(query);
-  }
-  private fallbackParse(query: string): ParsedQuery {
+    // --- Context parser mejorado ---
     const lowerQuery = query.toLowerCase();
-    const categories = ['brakes', 'filters', 'engine', 'suspension', 'steering', 'fuel', 'interior', 'exterior', 'accessories', 'cooling', 'exhaust', 'transmission', 'ignition'];
-    const foundCategory = categories.find(cat => lowerQuery.includes(cat));
-    const brands = ['toyota', 'honda', 'nissan', 'ford', 'chevrolet', 'bmw', 'mercedes', 'audi', 'volkswagen', 'hyundai', 'kia', 'mazda'];
-    const foundBrand = brands.find(brand => lowerQuery.includes(brand));
-    const quantityMatch = lowerQuery.match(/(\d+)/);
-    const quantity = quantityMatch ? parseInt(quantityMatch[1]) : null;
-    const urgency = lowerQuery.includes('urgent') || lowerQuery.includes('asap') ? 'high' : lowerQuery.includes('soon') ? 'medium' : null;
-    const pricePreference = lowerQuery.includes('cheap') || lowerQuery.includes('budget') ? 'budget' : lowerQuery.includes('premium') || lowerQuery.includes('high-end') ? 'premium' : lowerQuery.includes('mid') ? 'mid-range' : null;
-    // Try to extract product name (very basic)
+    // Lista de productos clave
+    const productKeywords = [
+      'brake pads', 'brake pad', 'air filter', 'oil filter', 'spark plug', 'alternator', 'ignition coil', 'engine kit', 'suspension component', 'rotor', 'battery', 'cabin air filter', 'fuel pump', 'timing chain', 'crankshaft', 'camshaft', 'brake rotor', 'brake fluid', 'brake hose', 'master cylinder'
+    ];
     let product_name = null;
-    for (const word of ['brake pad', 'air filter', 'spark plug', 'oil filter', 'alternator', 'ignition coil', 'engine kit', 'suspension component']) {
+    for (const word of productKeywords) {
       if (lowerQuery.includes(word)) product_name = word;
     }
+    // Extrae modelo y año
+    let model = null;
+    let year = null;
+    const modelYearMatch = lowerQuery.match(/([a-z]+)\s+([0-9]{4})/i);
+    if (modelYearMatch) {
+      model = modelYearMatch[1].charAt(0).toUpperCase() + modelYearMatch[1].slice(1);
+      year = modelYearMatch[2];
+    }
+    // Extrae marca
+    const brands = ['toyota', 'honda', 'nissan', 'ford', 'chevrolet', 'bmw', 'mercedes', 'audi', 'volkswagen', 'hyundai', 'kia', 'mazda'];
+    let brand = null;
+    for (const b of brands) {
+      if (lowerQuery.includes(b)) brand = b.charAt(0).toUpperCase() + b.slice(1);
+    }
+    // Extrae cantidad
+    const quantityMatch = lowerQuery.match(/(\d+)/);
+    const quantity = quantityMatch ? parseInt(quantityMatch[1]) : null;
+    // Extrae urgencia
+    const urgency = lowerQuery.includes('urgent') || lowerQuery.includes('asap') ? 'high' : lowerQuery.includes('soon') ? 'medium' : null;
+    // Extrae preferencia de precio
+    const pricePreference = lowerQuery.includes('cheap') || lowerQuery.includes('budget') ? 'budget' : lowerQuery.includes('premium') || lowerQuery.includes('high-end') ? 'premium' : lowerQuery.includes('mid') ? 'mid-range' : null;
+    // Producto compuesto (ej: brake pads for Toyota Camry 2020)
+    let compositeBrand = brand;
+    if (model && year) compositeBrand = `${brand || ''} ${model} ${year}`.trim();
     return {
-      product_category: foundCategory || null,
+      product_category: product_name ? product_name.split(' ')[0] : null,
       product_name,
-      brand: foundBrand || null,
+      brand: compositeBrand || brand,
       quantity,
       urgency,
       price_preference: pricePreference
@@ -243,28 +260,42 @@ class ProcurementService {
   }
   private findMatchingProducts(parsedQuery: ParsedQuery): Product[] {
     let matchingProducts: Product[] = [];
+    // --- Matching avanzado ---
+    // 1. Coincidencia exacta de nombre y compatibilidad
+    if (parsedQuery.product_name && parsedQuery.brand) {
+      matchingProducts = this.dataService.getProducts().filter(product =>
+        product.name.toLowerCase().includes(parsedQuery.product_name!.toLowerCase()) &&
+        ((product.compatibility && product.compatibility.some(c => c.toLowerCase().includes(parsedQuery.brand!.toLowerCase()))) ||
+         product.brand.toLowerCase().includes(parsedQuery.brand!.toLowerCase()))
+      );
+      if (matchingProducts.length > 0) return matchingProducts;
+    }
+    // 2. Coincidencia exacta de nombre
+    if (parsedQuery.product_name) {
+      matchingProducts = this.dataService.getProducts().filter(product =>
+        product.name.toLowerCase().includes(parsedQuery.product_name!.toLowerCase())
+      );
+      if (matchingProducts.length > 0) return matchingProducts;
+    }
+    // 3. Coincidencia por compatibilidad/modelo/año
+    if (parsedQuery.brand) {
+      matchingProducts = this.dataService.getProducts().filter(product =>
+        (product.compatibility && product.compatibility.some(c => c.toLowerCase().includes(parsedQuery.brand!.toLowerCase()))) ||
+        product.brand.toLowerCase().includes(parsedQuery.brand!.toLowerCase())
+      );
+      if (matchingProducts.length > 0) return matchingProducts;
+    }
+    // 4. Coincidencia por categoría
     if (parsedQuery.product_category) {
       matchingProducts = this.dataService.findProductsByCategory(parsedQuery.product_category);
+      if (matchingProducts.length > 0) return matchingProducts;
     }
-    if (matchingProducts.length === 0 && parsedQuery.product_name) {
-      matchingProducts = this.dataService.findProductsByName(parsedQuery.product_name);
-    }
-    if (parsedQuery.brand && matchingProducts.length > 0) {
-      matchingProducts = matchingProducts.filter(product =>
-        product.brand.toLowerCase().includes(parsedQuery.brand!.toLowerCase()) ||
-        product.compatibility.some(comp => comp.toLowerCase().includes(parsedQuery.brand!.toLowerCase()))
-      );
-    }
-    if (matchingProducts.length === 0) {
-      const allProducts = this.dataService.getProducts();
-      const query = `${parsedQuery.product_category || ''} ${parsedQuery.product_name || ''}`.toLowerCase();
-      matchingProducts = allProducts.filter(product =>
-        product.name.toLowerCase().includes(query) ||
-        product.category.toLowerCase().includes(query) ||
-        product.sku.toLowerCase().includes(query)
-      );
-    }
-    return matchingProducts;
+    // 5. Fallback flexible
+    return this.dataService.getProducts().filter(product =>
+      (parsedQuery.product_name && product.name.toLowerCase().includes(parsedQuery.product_name.toLowerCase())) ||
+      (parsedQuery.product_category && product.category.toLowerCase().includes(parsedQuery.product_category.toLowerCase())) ||
+      (parsedQuery.brand && product.brand.toLowerCase().includes(parsedQuery.brand.toLowerCase()))
+    );
   }
   private getSupplierOffers(products: Product[], request: ProcurementRequest, parsedQuery: ParsedQuery): SupplierOffer[] {
     const offers: SupplierOffer[] = [];
