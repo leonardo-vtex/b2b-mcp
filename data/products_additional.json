@@ -1,6 +1,29 @@
 {
   "products": [
     {
+      "sku": "BRK-020",
+      "name": "Brake Pads - Front Set",
+      "category": "brakes",
+      "brand": "Toyota",
+      "compatibility": ["Toyota Camry 2020", "Toyota Camry 2019", "Toyota Camry 2021"],
+      "specifications": {
+        "type": "Ceramic",
+        "position": "Front",
+        "thickness": "18mm",
+        "material": "Ceramic",
+        "sensor": "Included"
+      },
+      "dimensions": {
+        "length": "155mm",
+        "width": "60mm",
+        "height": "18mm"
+      },
+      "weight": "2.5kg",
+      "warranty": "24 months",
+      "certifications": ["ISO 9001", "DOT Approved"],
+      "description": "Premium ceramic brake pads for Toyota Camry 2020 front axle."
+    },
+    {
       "sku": "BRK-006",
       "name": "Brake Rotor Set - Front",
       "category": "brakes",
